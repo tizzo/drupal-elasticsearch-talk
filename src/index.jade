@@ -13,6 +13,146 @@ html
 
       section
         h1 Drupal and ElasticSearch
+        h4 @tizzo y @nstielau
+
+      section
+        h3 Introductions
+
+      section
+        h1 Act I: The Prologue
+
+      sectin
+        h1 What is Elasticsearch? (HT)
+
+      section
+        h2 ES vs. Solr
+        ul
+          li Uses lucene
+          li Elastic as in clusterable
+          li How does it compare Solr? (NS as Solr vs. HT as ES, i.e. mac vs. pc)
+          li Both JVM
+          li Both use Lucene search engine
+          li Both Apache 2 Licensed
+          li Both supported by commercial orgs
+          li Both support HTTP indexes
+          li Competition makes stuff better!
+
+      section
+        ES vs. MySQL? or Sphinx? (NS)
+
+      section
+        h2 Integrations
+        ul
+          li Solr has great Drupal Integration
+          li ES has great ELK/Kibana Integrations
+
+      section
+        h1 Stop!
+        h2 DemoTime
+
+      section
+        h4 Starting instances (demo video) (HT)
+        h4  Clustering (demo video) (HT)
+
+      section
+        h1 Act II:  The Nitty and The Gritty
+
+      section
+        h2 MVP use case with curl  (NS)
+        pre
+          code.language-javascript.
+            curl 127.0.0.1
+        Create an index (curl)
+        pre
+          code.language-javascript.
+            curl 127.0.0.1
+        store 2 docs
+        pre
+          code.language-javascript.
+            curl 127.0.0.1
+        query for 1
+
+      section
+        Web UI? or just Loading JSON in browser
+        aka “If I can’t see it in a browser it didn’t happen, this is DrupalCon”
+
+      section
+        h2 Advanced Features (esp. more/better/different than Solr) HT
+        ul
+          li Percolate
+          li Any other features here?
+          li Any other advanced use-cases? (autocomplete?)
+
+      section
+        h1 Act III: ElasticSearch use-cases
+
+      section
+        h1 Drupal Modules (HT)
+        Howard to write-up/screen capture
+
+      section Worpress (NS)
+        h2 TODO: Nick to sync up with Alley Interactive
+
+      section
+        h1 Ops
+
+      section
+        h1 ELK Intro, value prop (NS)
+        ul
+          lu What are rich logs?
+          li Logstash
+
+      section
+        h2 How do I get me data into ELK (HT)?
+        ul
+          li Logstash
+          li WatchDog (Amitai: Log http module)
+          li System (syslog)
+          li error log
+          li Access-Logs
+          li Parsing in Logstash (enrichifying™)
+
+      section
+        h1 Use-cases (NS)
+        ul
+          li Security
+          li Exceptions
+          li JS/Browser stuff
+          li Example (NS)
+          li Diagnose outage
+          li Kibana (Nick)
+          li Some Pantheon Screenshots, video of drilling down
+          li brute-force password guessing
+
+      section
+        h1 Kibana, ELK Demo Video (HT)
+
+      section
+        h1 How do I get started?
+        ul
+          li DIY (HT)
+          li MVP Config Managment (Chef, Puppet)
+          li Consul for Service Discovery
+          li To the future!
+
+      section
+        h1 Hosted ElasticSearch
+
+      section
+        h3 How to sneak in ES (NS)
+        ul
+          li Use for ops
+          li show is awesome
+
+      section
+        h1 References
+        ul
+          li ES Docs
+          li Blog posts, etc
+          li Our Docker stuff
+
+      section
+        h1 Image Credits
 
       section
         h2 Keyboard Interaction
