@@ -10,6 +10,149 @@
     <article>
       <section>
         <h1>Drupal and ElasticSearch</h1>
+        <h4>@tizzo y @nstielau</h4>
+      </section>
+      <section>
+        <h3>Introductions</h3>
+      </section>
+      <section>
+        <h1>Act I: The Prologue</h1>
+      </section>
+      <sectin>
+        <h1>What is Elasticsearch? (HT)</h1>
+      </sectin>
+      <section>
+        <h2>ES vs. Solr</h2>
+        <ul>
+          <li>Uses lucene</li>
+          <li>Elastic as in clusterable</li>
+          <li>How does it compare Solr? (NS as Solr vs. HT as ES, i.e. mac vs. pc)</li>
+          <li>Both JVM</li>
+          <li>Both use Lucene search engine</li>
+          <li>Both Apache 2 Licensed</li>
+          <li>Both supported by commercial orgs</li>
+          <li>Both support HTTP indexes</li>
+          <li>Competition makes stuff better!</li>
+        </ul>
+      </section>
+      <section>
+        <ES>vs. MySQL? or Sphinx? (NS)</ES>
+      </section>
+      <section>
+        <h2>Integrations</h2>
+        <ul>
+          <li>Solr has great Drupal Integration</li>
+          <li>ES has great ELK/Kibana Integrations</li>
+        </ul>
+      </section>
+      <section>
+        <h1>Stop!</h1>
+        <h2>DemoTime</h2>
+      </section>
+      <section>
+        <h4>Starting instances (demo video) (HT)</h4>
+        <h4> Clustering (demo video) (HT)</h4>
+      </section>
+      <section>
+        <h1>Act II:  The Nitty and The Gritty</h1>
+      </section>
+      <section>
+        <h2>MVP use case with curl  (NS)</h2>
+        <pre><code class="language-javascript">curl 127.0.0.1</code></pre>
+        <Create>an index (curl)</Create>
+        <pre><code class="language-javascript">curl 127.0.0.1</code></pre>
+        <store>2 docs</store>
+        <pre><code class="language-javascript">curl 127.0.0.1</code></pre>
+        <query>for 1</query>
+      </section>
+      <section>
+        <Web>UI? or just Loading JSON in browser</Web>
+        <aka>“If I can’t see it in a browser it didn’t happen, this is DrupalCon”</aka>
+      </section>
+      <section>
+        <h2>Advanced Features (esp. more/better/different than Solr) HT</h2>
+        <ul>
+          <li>Percolate</li>
+          <li>Any other features here?</li>
+          <li>Any other advanced use-cases? (autocomplete?)</li>
+        </ul>
+      </section>
+      <section>
+        <h1>Act III: ElasticSearch use-cases</h1>
+      </section>
+      <section>
+        <h1>Drupal Modules (HT)</h1>
+        <Howard>to write-up/screen capture</Howard>
+      </section>
+      <section>Worpress (NS)
+        <h2>TODO: Nick to sync up with Alley Interactive</h2>
+      </section>
+      <section>
+        <h1>Ops</h1>
+      </section>
+      <section>
+        <h1>ELK Intro, value prop (NS)</h1>
+        <ul>
+          <lu>What are rich logs?</lu>
+          <li>Logstash</li>
+        </ul>
+      </section>
+      <section>
+        <h2>How do I get me data into ELK (HT)?</h2>
+        <ul>
+          <li>Logstash</li>
+          <li>WatchDog (Amitai: Log http module)</li>
+          <li>System (syslog)</li>
+          <li>error log</li>
+          <li>Access-Logs</li>
+          <li>Parsing in Logstash (enrichifying™)</li>
+        </ul>
+      </section>
+      <section>
+        <h1>Use-cases (NS)</h1>
+        <ul>
+          <li>Security</li>
+          <li>Exceptions</li>
+          <li>JS/Browser stuff</li>
+          <li>Example (NS)</li>
+          <li>Diagnose outage</li>
+          <li>Kibana (Nick)</li>
+          <li>Some Pantheon Screenshots, video of drilling down</li>
+          <li>brute-force password guessing</li>
+        </ul>
+      </section>
+      <section>
+        <h1>Kibana, ELK Demo Video (HT)</h1>
+      </section>
+      <section>
+        <h1>How do I get started?</h1>
+        <ul>
+          <li>DIY (HT)</li>
+          <li>MVP Config Managment (Chef, Puppet)</li>
+          <li>Consul for Service Discovery</li>
+          <li>To the future!</li>
+        </ul>
+      </section>
+      <section>
+        <h1>Hosted ElasticSearch</h1>
+      </section>
+      <section>
+        <h3>How to sneak in ES (NS)</h3>
+        <ul>
+          <li>Use for ops</li>
+          <li>show is awesome</li>
+        </ul>
+      </section>
+      <section>
+        <h1>References</h1>
+        <ul>
+          <li>ES Docs</li>
+          <li>Blog posts, etc</li>
+          <li>Our Docker stuff</li>
+        </ul>
+      </section>
+      <section>
+        <h1>Image Credits</h1>
       </section>
       <section>
         <h2>Keyboard Interaction</h2>
