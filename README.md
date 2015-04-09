@@ -1,6 +1,8 @@
 # Drupal and ElasticSearch
 > A [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation, built with [generator-bespoke](https://github.com/markdalgleish/generator-bespoke)
 
+Check out the [slides](http://tizzo.github.io/drupal-elasticsearch-talk/#16).
+
 ## View slides locally
 
 First, ensure you have the following installed:
