@@ -28,9 +28,22 @@ html
         // What do we want to for 'Act X' images? curtains
 
       section
-        h1 What is Elasticsearch? (HT)
+        // HT
+        h1 What is Elasticsearch?
+      section
+        h2 Modern
+      section
+        h2 Near Realtime
+      section
+        h2 Based on Lucene
+        p (like all good open source search)
+      section
+        h2 Clusterable
+      section
+        h2 What is Elasticsearch?
 
       section
+        // TODO: We should break this up into subslides for this section.
         h2 ES vs. Solr
         ul
           li Uses lucene
@@ -44,7 +57,8 @@ html
           li Competition makes stuff better!
 
       section
-        ES vs. MySQL? or Sphinx? (NS)
+        // Nick
+        ES vs. MySQL? or Sphinx?
 
       section
         h2 Integrations
@@ -57,8 +71,12 @@ html
         h2 DemoTime
 
       section
-        h4 Starting instances (demo video) (HT)
-        h4  Clustering (demo video) (HT)
+        // HT
+        h2 Starting instances (demo video)
+        // TODO: Add video
+      section
+        // HT
+        h2  Clustering
 
       section
         h1 Act II:  The Nitty and The Gritty
@@ -83,18 +101,34 @@ html
         aka “If I can’t see it in a browser it didn’t happen, this is DrupalCon”
 
       section
-        h2 Advanced Features (esp. more/better/different than Solr) HT
-        ul
-          li Percolate
-          li Any other features here?
-          li Any other advanced use-cases? (autocomplete?)
+        // HT
+        h1 Advanced Features
+
+      section
+        h1 Percolate
+        img(src="images/percolate-yo-dawg.jpg")
+
+      section
+        h1 Create a
+        pre
+          code.language-bash.
+            curl -XPUT 'localhost:9200/my-index/.percolator/1' -d '{
+              "query" : {
+                "match" : {
+                  "message" : "bonsai tree"
+                }
+              }
+            }'
+
 
       section
         h1 Act III: ElasticSearch use-cases
 
       section
-        h1 Drupal Modules (HT)
-        Howard to write-up/screen capture
+        h1 Drupal Modules
+
+      section
+        h1 Search API Elasticsearch
 
       section Worpress (NS)
         h2 TODO: Nick to sync up with Alley Interactive
