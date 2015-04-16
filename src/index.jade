@@ -106,12 +106,17 @@ html
 
       section
         h1 Percolate
+        ul
+          li Store searches
+
+
+      section
         img(src="images/percolate-yo-dawg.jpg")
 
       section
-        h1 Create a
+        h2 Store a Query
         pre
-          code.language-bash.
+          code.language-javascript.
             curl -XPUT 'localhost:9200/my-index/.percolator/1' -d '{
               "query" : {
                 "match" : {
@@ -119,6 +124,35 @@ html
                 }
               }
             }'
+      section
+        h2 Query for matches
+        h3 Running:
+        pre
+          code.language-javascript.
+            curl -XGET 'localhost:9200/my-index/message/_percolate' -d '{
+              "doc" : {
+                "message" : "A new bonsai tree in the office"
+              }
+            }'
+      section
+        h2 Get results
+        pre
+          code.language-javascript.
+            {
+              "took" : 19,
+              "_shards" : {
+                "total" : 5,
+                "successful" : 5,
+                "failed" : 0
+              },
+              "total" : 1,
+              "matches" : [
+                {
+                  "_index" : "my-index",
+                  "_id" : "1"
+                }
+              ]
+            }
 
 
       section
