@@ -13,15 +13,40 @@
         <h4>@tizzo y @nstielau</h4>
       </section>
       <section>
-        <h3>Introductions</h3>
+        <!-- TODO: Side by side-->
+        <div>
+          <h4>Nick</h4>
+        </div>
+        <div>
+          <h4>Howard</h4>
+        </div>
       </section>
       <section>
         <h1>Act I: The Prologue</h1>
+        <!-- What do we want to for 'Act X' images? curtains-->
       </section>
-      <sectin>
-        <h1>What is Elasticsearch? (HT)</h1>
-      </sectin>
       <section>
+        <!-- HT-->
+        <h1>What is Elasticsearch?</h1>
+      </section>
+      <section>
+        <h2>Modern</h2>
+      </section>
+      <section>
+        <h2>Near Realtime</h2>
+      </section>
+      <section>
+        <h2>Based on Lucene</h2>
+        <p>(like all good open source search)</p>
+      </section>
+      <section>
+        <h2>Clusterable</h2>
+      </section>
+      <section>
+        <h2>What is Elasticsearch?</h2>
+      </section>
+      <section>
+        <!-- TODO: We should break this up into subslides for this section.-->
         <h2>ES vs. Solr</h2>
         <ul>
           <li>Uses lucene</li>
@@ -36,7 +61,8 @@
         </ul>
       </section>
       <section>
-        <ES>vs. MySQL? or Sphinx? (NS)</ES>
+        <!-- Nick-->
+        <ES>vs. MySQL? or Sphinx?</ES>
       </section>
       <section>
         <h2>Integrations</h2>
@@ -50,8 +76,13 @@
         <h2>DemoTime</h2>
       </section>
       <section>
-        <h4>Starting instances (demo video) (HT)</h4>
-        <h4> Clustering (demo video) (HT)</h4>
+        <!-- HT-->
+        <h2>Starting instances (demo video)</h2>
+        <!-- TODO: Add video-->
+      </section>
+      <section>
+        <!-- HT-->
+        <h2> Clustering</h2>
       </section>
       <section>
         <h1>Act II:  The Nitty and The Gritty</h1>
@@ -70,19 +101,63 @@
         <aka>“If I can’t see it in a browser it didn’t happen, this is DrupalCon”</aka>
       </section>
       <section>
-        <h2>Advanced Features (esp. more/better/different than Solr) HT</h2>
+        <!-- HT-->
+        <h1>Advanced Features</h1>
+      </section>
+      <section>
+        <h1>Percolate</h1>
         <ul>
-          <li>Percolate</li>
-          <li>Any other features here?</li>
-          <li>Any other advanced use-cases? (autocomplete?)</li>
+          <li>Store searches</li>
         </ul>
+      </section>
+      <section><img src="images/percolate-yo-dawg.jpg"></section>
+      <section>
+        <h2>Store a Query</h2>
+        <pre><code class="language-javascript">curl -XPUT 'localhost:9200/my-index/.percolator/1' -d '{
+  "query" : {
+    "match" : {
+      "message" : "bonsai tree"
+    }
+  }
+}'</code></pre>
+      </section>
+      <section>
+        <h2>Query for matches</h2>
+        <h3>Running:</h3>
+        <pre><code class="language-javascript">curl -XGET 'localhost:9200/my-index/message/_percolate' -d '{
+  "doc" : {
+    "message" : "A new bonsai tree in the office"
+  }
+}'</code></pre>
+      </section>
+      <section>
+        <h2>Get results</h2>
+        <pre><code class="language-javascript">{
+  "took" : 19,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "total" : 1,
+  "matches" : [
+    {
+      "_index" : "my-index",
+      "_id" : "1"
+    }
+  ]
+}
+
+</code></pre>
       </section>
       <section>
         <h1>Act III: ElasticSearch use-cases</h1>
       </section>
       <section>
-        <h1>Drupal Modules (HT)</h1>
-        <Howard>to write-up/screen capture</Howard>
+        <h1>Drupal Modules</h1>
+      </section>
+      <section>
+        <h1>Search API Elasticsearch</h1>
       </section>
       <section>Worpress (NS)
         <h2>TODO: Nick to sync up with Alley Interactive</h2>
