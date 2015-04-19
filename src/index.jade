@@ -18,18 +18,25 @@ html
       section
         // TODO: Side by side
         div
-          h4 Nick
+          h4 Nick Stielau aka @nstielau:
+          img(src="/images/nstielau.jpg" width="100")
         div
-          h4 Howard
+          h4 Howard Tyson aka @tizzo:
+          img(src="/images/tizzo.jpg" width="100")
 
 
-      section
+      section.act
         h1 Act I: The Prologue
         // What do we want to for 'Act X' images? curtains
 
       section
         // HT
-        h1 What is Elasticsearch?
+        h2 Elasticsearch is
+        ul
+          li a document-oriented search engine
+          li open source (Apache 2)
+          li built on top of Apache Lucene™
+          li fun!
       section
         h2 Modern
       section
@@ -57,14 +64,25 @@ html
           li Competition makes stuff better!
 
       section
-        // Nick
-        ES vs. MySQL? or Sphinx?
+        h2 ES vs. MySQL / MariaDB Full Text Search
+        p
+          This works out-of-the-box, but it can
+          ul
+            li hit the db hard
+            li be slow
+            li not provide good results
+
+      section
+        h2 ES vs. Sphinx
+        ul
+          li MySQL integrated search server
 
       section
         h2 Integrations
         ul
           li Solr has great Drupal Integration
           li ES has great ELK/Kibana Integrations
+          li More and more ES examples/plugins/modules, etc
 
       section
         h1 Stop!
@@ -78,7 +96,7 @@ html
         // HT
         h2  Clustering
 
-      section
+      section.act
         h1 Act II:  The Nitty and The Gritty
 
       section
@@ -103,6 +121,7 @@ html
       section
         // HT
         h1 Advanced Features
+        // Could go over the score boosting example from Alley below
 
       section
         h1 Percolate
@@ -155,17 +174,35 @@ html
             }
 
 
-      section
+      section.act
         h1 Act III: ElasticSearch use-cases
 
       section
-        h1 Drupal Modules
+        h1 Drupal Modules (HT)
+        p
+          Search API Elasticsearch
+          a http://www.sitepoint.com/install-integrate-elasticsearch-drupal/
+          Howard to write-up/screen capture
 
       section
-        h1 Search API Elasticsearch
+        h2 WordPress (NS)
+        p
+          never a coalesence around Drupal, acquia etc put weigth behind solr.  Done so well, not much other need. Setup solr is painful.  "In WP, core search is about as bad as Drupals.  Select title like blah blah sort by date". 500k nodes is unusable, WP came later, and ES is way better for web-indexing.  Much much easier to install & configure, easier to cluster, communicates with JSON, more options for weighting content, or, even if it does have the same features, it makes them easier to access.  Solr is pretty good. Matt Boynes did searchpress, drop-in search replacement for WP (on github).
 
-      section Worpress (NS)
-        h2 TODO: Nick to sync up with Alley Interactive
+        p
+          ES Docs is dense, ask someone Explain it to me like a 5 year old.
+        One suggestion: Ornately docs, but not some much examples....
+
+        p
+          Really new apple to a rotten apple.  WP-Query-Object, generally really specific to MySQL.  Kinda like Views, you can go off the rails.  Matt Boynes, WP-Query-Object subclass, to run WP out of ES. LEFT JOIN BLAH, no, let Lucene do it.  I don't want to deal with.
+
+        p
+          Matt Boynes WP Camp LA (see LA).
+
+      section
+        h2 Example: Boosting scores for popular content
+        p
+          Score boosting, pulling from Google Analytics, boosting ES score to update. 22 lines.  Add query args for ES based on GA results.  Fetch top 20 GA every 2h put in cache, if post ID in 213 add a 2-point scoreboost.  Boost-factor (__boost) (default+2)
 
       section
         h1 Ops
@@ -202,15 +239,29 @@ html
         h1 Kibana, ELK Demo Video (HT)
 
       section
-        h1 How do I get started?
+        h2 Up and running with ES
         ul
           li DIY (HT)
           li MVP Config Managment (Chef, Puppet)
-          li Consul for Service Discovery
+          li Clustered, Consul for Service Discovery
           li To the future!
 
       section
-        h1 Hosted ElasticSearch
+        h2 securing ES
+        p
+          a defaults are super open
+          a http://brudtkuhl.com/securing-elasticsearch/
+
+      section
+        h2 Hosted ElasticSearch
+        ul
+          li host near you
+          li price based on data, etc
+        ul
+          li https://qbox.io/
+          li https://www.compose.io/elasticsearch/
+          li https://www.found.no/
+          li https://bonsai.io/
 
       section
         h3 How to sneak in ES (NS)
@@ -243,7 +294,7 @@ html
       section
         h2 Bullet List
         h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
-        ul
+        ul.sequential
           li Bullet 1
           li Bullet 2
           li Bullet 3
