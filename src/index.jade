@@ -15,7 +15,7 @@ html
         h1 Drupal and ElasticSearch
         h4 @tizzo y @nstielau
 
-      section
+      section(data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true")
         // TODO: Side by side
         div
           h4 Nick Stielau aka @nstielau:
@@ -29,32 +29,34 @@ html
         h1 Act I: The Prologue
         // What do we want to for 'Act X' images? curtains
 
+      section(class="tizzo")
+        h1 What is Elasticsearch?
+
       section
-        // HT
-        h2 Elasticsearch is
-        ul
-          li a document-oriented search engine
-          li open source (Apache 2)
-          li built on top of Apache Lucene™
-          li fun!
+        h2 Open source
+        h3 (Apache 2)
+
+      section
+        h2 Document-oriented
+
       section
         h2 Modern
+
       section
         h2 Near Realtime
+
       section
         h2 Based on Lucene
         p (like all good open source search)
+
       section
         h2 Clusterable
-      section
-        h2 What is Elasticsearch?
 
       section
         // TODO: We should break this up into subslides for this section.
         h2 ES vs. Solr
         ul
           li Uses lucene
-          li Elastic as in clusterable
           li How does it compare Solr? (NS as Solr vs. HT as ES, i.e. mac vs. pc)
           li Both JVM
           li Both use Lucene search engine
@@ -88,12 +90,11 @@ html
         h1 Stop!
         h2 DemoTime
 
-      section
-        // HT
+      section(class="tizzo")
         h2 Starting instances (demo video)
         // TODO: Add video
-      section
-        // HT
+
+      section(class="tizzo")
         h2  Clustering
 
       section.act
@@ -118,16 +119,15 @@ html
         Web UI? or just Loading JSON in browser
         aka “If I can’t see it in a browser it didn’t happen, this is DrupalCon”
 
-      section
-        // HT
+      section(class="tizzo")
         h1 Advanced Features
         // Could go over the score boosting example from Alley below
 
       section
-        h1 Percolate
-        ul
-          li Store searches
+        h1 Histogram
 
+      section
+        h1 Percolate
 
       section
         img(src="images/percolate-yo-dawg.jpg")

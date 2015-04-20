@@ -6,6 +6,7 @@ var bespoke = require('bespoke'),
   bullets = require('bespoke-bullets'),
   backdrop = require('bespoke-backdrop'),
   scale = require('bespoke-scale'),
+  fx = require('bespoke-fx'),
   hash = require('bespoke-hash');
 
 // Bespoke.js
