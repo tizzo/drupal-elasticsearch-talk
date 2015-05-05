@@ -12,22 +12,28 @@
         <h1>Drupal and ElasticSearch</h1>
         <h4>@tizzo y @nstielau</h4>
       </section>
-      <section>
+      <section data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true">
         <!-- TODO: Side by side-->
         <div>
-          <h4>Nick</h4>
+          <h4>Nick Stielau aka @nstielau:</h4><img src="/images/nstielau.jpg" width="100">
         </div>
         <div>
-          <h4>Howard</h4>
+          <h4>Howard Tyson aka @tizzo:</h4><img src="/images/tizzo.jpg" width="100">
         </div>
       </section>
-      <section>
+      <section class="act">
         <h1>Act I: The Prologue</h1>
         <!-- What do we want to for 'Act X' images? curtains-->
       </section>
-      <section>
-        <!-- HT-->
+      <section class="tizzo">
         <h1>What is Elasticsearch?</h1>
+      </section>
+      <section>
+        <h2>Open source</h2>
+        <h3>(Apache 2)</h3>
+      </section>
+      <section>
+        <h2>Document-oriented</h2>
       </section>
       <section>
         <h2>Modern</h2>
@@ -40,20 +46,17 @@
         <p>(like all good open source search)</p>
       </section>
       <section>
+        <h2>That means Java (and the JVM)</h2>
+      </section>
+      <section>
         <h2>Clusterable</h2>
       </section>
       <section>
-        <h2>What is Elasticsearch?</h2>
-      </section>
-      <section>
-        <!-- TODO: We should break this up into subslides for this section.-->
+        <!-- TODO: We should finish breaking this up into subslides-->
+        <!-- for this section.-->
         <h2>ES vs. Solr</h2>
         <ul>
-          <li>Uses lucene</li>
-          <li>Elastic as in clusterable</li>
           <li>How does it compare Solr? (NS as Solr vs. HT as ES, i.e. mac vs. pc)</li>
-          <li>Both JVM</li>
-          <li>Both use Lucene search engine</li>
           <li>Both Apache 2 Licensed</li>
           <li>Both supported by commercial orgs</li>
           <li>Both support HTTP indexes</li>
@@ -61,35 +64,47 @@
         </ul>
       </section>
       <section>
-        <!-- Nick-->
-        <ES>vs. MySQL? or Sphinx?</ES>
+        <h2>ES vs. MySQL / MariaDB Full Text Search</h2>
+        <p>
+          <This>works out-of-the-box, but it can</This>
+          <ul>
+            <li>hit the db hard</li>
+            <li>be slow</li>
+            <li>not provide good results</li>
+          </ul>
+        </p>
+      </section>
+      <section>
+        <h2>ES vs. Sphinx</h2>
+        <ul>
+          <li>MySQL integrated search server</li>
+        </ul>
       </section>
       <section>
         <h2>Integrations</h2>
         <ul>
           <li>Solr has great Drupal Integration</li>
           <li>ES has great ELK/Kibana Integrations</li>
+          <li>More and more ES examples/plugins/modules, etc</li>
         </ul>
       </section>
       <section>
         <h1>Stop!</h1>
         <h2>DemoTime</h2>
       </section>
-      <section>
-        <!-- HT-->
+      <section class="tizzo">
         <h2>Starting instances (demo video)</h2>
         <!-- TODO: Add video-->
       </section>
-      <section>
-        <!-- HT-->
+      <section class="tizzo">
         <h2> Clustering</h2>
       </section>
-      <section>
+      <section class="act">
         <h1>Act II:  The Nitty and The Gritty</h1>
       </section>
       <section>
         <h2>MVP use case with curl  (NS)</h2>
-        <pre><code class="language-javascript">curl 127.0.0.1</code></pre>
+        <pre><code class="language-bash">curl 127.0.0.1</code></pre>
         <Create>an index (curl)</Create>
         <pre><code class="language-javascript">curl 127.0.0.1</code></pre>
         <store>2 docs</store>
@@ -100,15 +115,15 @@
         <Web>UI? or just Loading JSON in browser</Web>
         <aka>“If I can’t see it in a browser it didn’t happen, this is DrupalCon”</aka>
       </section>
-      <section>
-        <!-- HT-->
+      <section class="tizzo">
         <h1>Advanced Features</h1>
+        <!-- Could go over the score boosting example from Alley below-->
+      </section>
+      <section>
+        <h1>Histogram</h1>
       </section>
       <section>
         <h1>Percolate</h1>
-        <ul>
-          <li>Store searches</li>
-        </ul>
       </section>
       <section><img src="images/percolate-yo-dawg.jpg"></section>
       <section>
@@ -150,17 +165,37 @@
 
 </code></pre>
       </section>
-      <section>
+      <section class="act">
         <h1>Act III: ElasticSearch use-cases</h1>
       </section>
       <section>
-        <h1>Drupal Modules</h1>
+        <h1>Drupal Modules (HT)</h1>
+        <p>
+          <Search>API Elasticsearch</Search><a>http://www.sitepoint.com/install-integrate-elasticsearch-drupal/</a>
+          <Howard>to write-up/screen capture</Howard>
+        </p>
       </section>
       <section>
-        <h1>Search API Elasticsearch</h1>
+        <h2>WordPress (NS)</h2>
+        <p>
+          <never>a coalesence around Drupal, acquia etc put weigth behind solr.  Done so well, not much other need. Setup solr is painful.  "In WP, core search is about as bad as Drupals.  Select title like blah blah sort by date". 500k nodes is unusable, WP came later, and ES is way better for web-indexing.  Much much easier to install & configure, easier to cluster, communicates with JSON, more options for weighting content, or, even if it does have the same features, it makes them easier to access.  Solr is pretty good. Matt Boynes did searchpress, drop-in search replacement for WP (on github).</never>
+        </p>
+        <p>
+          <ES>Docs is dense, ask someone Explain it to me like a 5 year old.</ES>
+        </p>
+        <One>suggestion: Ornately docs, but not some much examples....</One>
+        <p>
+          <Really>new apple to a rotten apple.  WP-Query-Object, generally really specific to MySQL.  Kinda like Views, you can go off the rails.  Matt Boynes, WP-Query-Object subclass, to run WP out of ES. LEFT JOIN BLAH, no, let Lucene do it.  I don't want to deal with.</Really>
+        </p>
+        <p>
+          <Matt>Boynes WP Camp LA (see LA).</Matt>
+        </p>
       </section>
-      <section>Worpress (NS)
-        <h2>TODO: Nick to sync up with Alley Interactive</h2>
+      <section>
+        <h2>Example: Boosting scores for popular content</h2>
+        <p>
+          <Score>boosting, pulling from Google Analytics, boosting ES score to update. 22 lines.  Add query args for ES based on GA results.  Fetch top 20 GA every 2h put in cache, if post ID in 213 add a 2-point scoreboost.  Boost-factor (__boost) (default+2)</Score>
+        </p>
       </section>
       <section>
         <h1>Ops</h1>
@@ -200,16 +235,30 @@
         <h1>Kibana, ELK Demo Video (HT)</h1>
       </section>
       <section>
-        <h1>How do I get started?</h1>
+        <h2>Up and running with ES</h2>
         <ul>
           <li>DIY (HT)</li>
           <li>MVP Config Managment (Chef, Puppet)</li>
-          <li>Consul for Service Discovery</li>
+          <li>Clustered, Consul for Service Discovery</li>
           <li>To the future!</li>
         </ul>
       </section>
       <section>
-        <h1>Hosted ElasticSearch</h1>
+        <h2>securing ES</h2>
+        <p><a>defaults are super open</a><a>http://brudtkuhl.com/securing-elasticsearch/</a></p>
+      </section>
+      <section>
+        <h2>Hosted ElasticSearch</h2>
+        <ul>
+          <li>host near you</li>
+          <li>price based on data, etc</li>
+        </ul>
+        <ul>
+          <li>https://qbox.io/</li>
+          <li>https://www.compose.io/elasticsearch/</li>
+          <li>https://www.found.no/</li>
+          <li>https://bonsai.io/</li>
+        </ul>
       </section>
       <section>
         <h3>How to sneak in ES (NS)</h3>
@@ -244,7 +293,7 @@
       <section>
         <h2>Bullet List</h2>
         <h3 class="bullet">Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a></h3>
-        <ul>
+        <ul class="sequential">
           <li>Bullet 1</li>
           <li>Bullet 2</li>
           <li>Bullet 3</li>
@@ -283,5 +332,6 @@
       </section>
     </article>
     <script src="build/build.js"></script>
+    <script src="bower_components/prism/prism.js"></script>
   </body>
 </html>
