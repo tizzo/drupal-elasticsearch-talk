@@ -30,14 +30,28 @@ html
         // What do we want to for 'Act X' images? curtains
 
       section(class="tizzo")
-        h1 What is Elasticsearch?
+        h3 Elasticsearch is..
+        p
+          = 'a distributed, open source search and analytics engine, designed for horizontal scalability, reliability, and easy management.'
 
-      section
-        h2 Open source
-        h3 (Apache 2)
+      section.left.cluster
+        h3 ElasticSearch is Distributed
+        p.wide "Elasticsearch allows you to start small and scale horizontally as you grow. Simply add more nodes, and let the cluster automatically take advantage of the extra hardware."
 
-      section
-        h2 Document-oriented
+      section.left.asf
+        h3 ElasticSearch is Open source
+        p.wide The Apache License (/əˈpætʃi/) is a free software license written by the Apache Software Foundation (ASF). The Apache License requires preservation of the copyright notice and disclaimer.
+
+      section.left
+        h3 ElasticSearch is Document-oriented
+        pre
+          code.language-javascript.
+            {
+              "name": "Fin",
+              "nickname": "Finito Burrito",
+              "breed": "megamutt",
+              "species": "canine"
+            }
 
       section
         h2 Modern
