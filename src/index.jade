@@ -24,26 +24,25 @@ html
           h4 Howard Tyson aka @tizzo:
           img(src="/images/tizzo.jpg" width="100")
 
-
       section.act
         h1 Act I: The Prologue
         // What do we want to for 'Act X' images? curtains
 
-      section(class="tizzo")
-        h3 Elasticsearch is..
+      section.tizzo.content
+        h2 Elasticsearch is..
         p
           = 'a distributed, open source search and analytics engine, designed for horizontal scalability, reliability, and easy management.'
 
-      section.left.cluster
-        h3 ElasticSearch is Distributed
-        p.wide "Elasticsearch allows you to start small and scale horizontally as you grow. Simply add more nodes, and let the cluster automatically take advantage of the extra hardware."
+      section.content.cluster
+        h2 ElasticSearch is Distributed
+        p "Elasticsearch allows you to start small and scale horizontally as you grow. Simply add more nodes, and let the cluster automatically take advantage of the extra hardware."
 
-      section.left.asf
-        h3 ElasticSearch is Open source
-        p.wide The Apache License (/əˈpætʃi/) is a free software license written by the Apache Software Foundation (ASF). The Apache License requires preservation of the copyright notice and disclaimer.
+      section.content.asf
+        h2 ElasticSearch is Open source
+        p The Apache License (/əˈpætʃi/) is a free software license written by the Apache Software Foundation (ASF). The Apache License requires preservation of the copyright notice and disclaimer.
 
-      section.left
-        h3 ElasticSearch is Document-oriented
+      section.content
+        h2 ElasticSearch is Schema-free & Document-oriented
         pre
           code.language-javascript.
             {
@@ -53,23 +52,23 @@ html
               "species": "canine"
             }
 
-      section
+      section.content
         h2 Modern
 
-      section
+      section.content
         h2 Near Realtime
 
-      section
-        h2 Based on Lucene
+      section.content
+        h2 ElasticSearch is built on Apache Lucene™
         p (like all good open source search)
 
-      section
+      section.content
         h2 That means Java (and the JVM)
 
-      section
+      section.content
         h2 Clusterable
 
-      section
+      section.content
         // TODO: We should finish breaking this up into subslides
         // for this section.
         h2 ES vs. Solr
@@ -79,22 +78,22 @@ html
           li Both supported by commercial orgs
           li Both support HTTP indexes
           li Competition makes stuff better!
+          li http://solr-vs-elasticsearch.com/
 
-      section
+      section.content
         h2 ES vs. MySQL / MariaDB Full Text Search
-        p
-          This works out-of-the-box, but it can
-          ul
-            li hit the db hard
-            li be slow
-            li not provide good results
+        p This works out-of-the-box, but it can
+        ul
+          li hit the db hard
+          li be slow
+          li not provide good results
 
-      section
+      section.content
         h2 ES vs. Sphinx
         ul
           li MySQL integrated search server
 
-      section
+      section.content
         h2 Integrations
         ul
           li Solr has great Drupal Integration
@@ -105,17 +104,17 @@ html
         h1 Stop!
         h2 DemoTime
 
-      section(class="tizzo")
+      section.tizzo.content
         h2 Starting instances (demo video)
         // TODO: Add video
 
-      section(class="tizzo")
+      section.tizzo.content
         h2  Clustering
 
       section.act
         h1 Act II:  The Nitty and The Gritty
 
-      section
+      section.content
         h2 MVP use case with curl  (NS)
         pre
           code.language-javascript.
@@ -134,7 +133,7 @@ html
         Web UI? or just Loading JSON in browser
         aka “If I can’t see it in a browser it didn’t happen, this is DrupalCon”
 
-      section(class="tizzo")
+      section.tizzo
         h1 Advanced Features
         // Could go over the score boosting example from Alley below
 
@@ -199,37 +198,33 @@ html
           a http://www.sitepoint.com/install-integrate-elasticsearch-drupal/
           Howard to write-up/screen capture
 
-      section
-        h2 WordPress (NS)
-        p
-          never a coalesence around Drupal, acquia etc put weigth behind solr.  Done so well, not much other need. Setup solr is painful.  "In WP, core search is about as bad as Drupals.  Select title like blah blah sort by date". 500k nodes is unusable, WP came later, and ES is way better for web-indexing.  Much much easier to install & configure, easier to cluster, communicates with JSON, more options for weighting content, or, even if it does have the same features, it makes them easier to access.  Solr is pretty good. Matt Boynes did searchpress, drop-in search replacement for WP (on github).
+      section.nstielau.content
+        h2 WordPress
+        p never a coalesence around Drupal, acquia etc put weigth behind solr.  Done so well, not much other need. Setup solr is painful.  "In WP, core search is about as bad as Drupals.  Select title like blah blah sort by date". 500k nodes is unusable, WP came later, and ES is way better for web-indexing.  Much much easier to install & configure, easier to cluster, communicates with JSON, more options for weighting content, or, even if it does have the same features, it makes them easier to access.  Solr is pretty good. Matt Boynes did searchpress, drop-in search replacement for WP (on github).
 
-        p
-          ES Docs is dense, ask someone Explain it to me like a 5 year old.
+        p ES Docs is dense, ask someone Explain it to me like a 5 year old.
         One suggestion: Ornately docs, but not some much examples....
 
-        p
-          Really new apple to a rotten apple.  WP-Query-Object, generally really specific to MySQL.  Kinda like Views, you can go off the rails.  Matt Boynes, WP-Query-Object subclass, to run WP out of ES. LEFT JOIN BLAH, no, let Lucene do it.  I don't want to deal with.
+        p Really new apple to a rotten apple.  WP-Query-Object, generally really specific to MySQL.  Kinda like Views, you can go off the rails.  Matt Boynes, WP-Query-Object subclass, to run WP out of ES. LEFT JOIN BLAH, no, let Lucene do it.  I don't want to deal with.
 
-        p
-          Matt Boynes WP Camp LA (see LA).
+        p Matt Boynes WP Camp LA (see LA).
 
-      section
+      section.content
         h2 Example: Boosting scores for popular content
         p
           Score boosting, pulling from Google Analytics, boosting ES score to update. 22 lines.  Add query args for ES based on GA results.  Fetch top 20 GA every 2h put in cache, if post ID in 213 add a 2-point scoreboost.  Boost-factor (__boost) (default+2)
 
-      section
-        h1 Ops
+      section.chapter
+        h1 Devops <3 ES
 
-      section
-        h1 ELK Intro, value prop (NS)
+      section.content.nstielau
+        h2 ELK Intro, value prop
         ul
           lu What are rich logs?
           li Logstash
 
-      section
-        h2 How do I get me data into ELK (HT)?
+      section.content.tizzo
+        h2 How do I get my data into ELK?
         ul
           li Logstash
           li WatchDog (Amitai: Log http module)
@@ -238,8 +233,8 @@ html
           li Access-Logs
           li Parsing in Logstash (enrichifying™)
 
-      section
-        h1 Use-cases (NS)
+      section.nstielau.content
+        h2 Use-cases
         ul
           li Security
           li Exceptions
@@ -250,10 +245,10 @@ html
           li Some Pantheon Screenshots, video of drilling down
           li brute-force password guessing
 
-      section
-        h1 Kibana, ELK Demo Video (HT)
+      section.content
+        h2 Kibana, ELK Demo Video (HT)
 
-      section
+      section.content
         h2 Up and running with ES
         ul
           li DIY (HT)
@@ -261,13 +256,13 @@ html
           li Clustered, Consul for Service Discovery
           li To the future!
 
-      section
+      section.content
         h2 securing ES
         p
           a defaults are super open
           a http://brudtkuhl.com/securing-elasticsearch/
 
-      section
+      section.content
         h2 Hosted ElasticSearch
         ul
           li host near you
@@ -278,33 +273,21 @@ html
           li https://www.found.no/
           li https://bonsai.io/
 
-      section
-        h3 How to sneak in ES (NS)
+      section.content.nstielau
+        h2 How to sneak in ES
         ul
           li Use for ops
           li show is awesome
 
-      section
-        h1 References
+      section.content
+        h2 References
         ul
           li ES Docs
           li Blog posts, etc
           li Our Docker stuff
 
-      section
-        h1 Image Credits
-
-      section
-        h2 Keyboard Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
-
-      section
-        h2 Touch Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a>
-
-      section
-        h2 Responsive Slides
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a>
+      section.content
+        h2 Image Credits
 
       section
         h2 Bullet List

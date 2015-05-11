@@ -13,14 +13,6 @@ section.act {
   background: url(/images/curtain.png);
 }
 
-.left {
-  align-items: baseline;
-  text-align: left;
-}
-
-p.wide {
-  margin: 0 0 50px 12px;
-}
 
 .asf {
   background-image: url(/images/asf.png);
@@ -32,4 +24,31 @@ p.wide {
   background-image: url(/images/cluster.png);
   background-repeat: no-repeat;
   background-position: bottom right;
+}
+
+.bespoke-slide.content {
+  justify-content: initial;
+  align-items: initial;
+  // align-items: baseline;
+  text-align: left;
+  padding: 40px 40px 40px 0;
+
+  p, pre, ul {
+    padding: 0 0 0 40px;
+    margin: 0;
+  }
+
+  h2 {
+    background: #bababa;
+    color: #3a3a3a;
+    height: 70px;
+  }
+}
+
+.bespoke-slide.chapter {
+  h1 {
+    background: #bababa;
+    color: #3a3a3a;
+    padding: 20px;
+  }
 }
