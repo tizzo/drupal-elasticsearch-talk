@@ -12,20 +12,24 @@ html
     article
 
       section
-        h1 Drupal and ElasticSearch
-        h4 @tizzo y @nstielau
+        h1 How I learned to love Elasticsearch
+        // Joke about 'we'?
+        h4 A love story, by @tizzo y @nstielau
 
-      section(data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true")
+      section.content(data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true")
         // TODO: Side by side
-        div
-          h4 Nick Stielau aka @nstielau:
+        div(style="float:right;")
+          h2 Nick Stielau
+          h3 @nstielau:
+          h4 Panthoer, Operator
           img(src="/images/nstielau.jpg" width="100")
         div
-          h4 Howard Tyson aka @tizzo:
+          h2 Howard Tyson
+          h3 aka @tizzo:
           img(src="/images/tizzo.jpg" width="100")
 
       section.act
-        h1 Act I: The Prologue
+        h1 Who is this ElasticSearch guy, anyway?
         // What do we want to for 'Act X' images? curtains
 
       section.tizzo.content
@@ -42,7 +46,7 @@ html
         p The Apache License (/əˈpætʃi/) is a free software license written by the Apache Software Foundation (ASF). The Apache License requires preservation of the copyright notice and disclaimer.
 
       section.content
-        h2 ElasticSearch is Schema-free & Document-oriented
+        h2 Document-oriented
         pre
           code.language-javascript.
             {
@@ -51,6 +55,8 @@ html
               "breed": "megamutt",
               "species": "canine"
             }
+        ul
+          li no pre-defined schema
 
       section.content
         h2 Modern
@@ -58,12 +64,12 @@ html
       section.content
         h2 Near Realtime
 
-      section.content
-        h2 ElasticSearch is built on Apache Lucene™
+      section.content.lucene
+        h2 Built on Apache Lucene™
         p (like all good open source search)
 
       section.content
-        h2 That means Java (and the JVM)
+        h2 ... Java (and the JVM)
 
       section.content
         h2 Clusterable
@@ -81,7 +87,7 @@ html
           li http://solr-vs-elasticsearch.com/
 
       section.content
-        h2 ES vs. MySQL / MariaDB Full Text Search
+        h2 ES vs. MySQL Full-text Search
         p This works out-of-the-box, but it can
         ul
           li hit the db hard
@@ -115,33 +121,50 @@ html
         h1 Act II:  The Nitty and The Gritty
 
       section.content
-        h2 MVP use case with curl  (NS)
+        // http://joelabrahamsson.com/elasticsearch-101/
+        h2 Inserting docs
         pre
           code.language-javascript.
-            curl 127.0.0.1
+            curl -XPUT "http://localhost:9200/animals/dogs/1" -d'
+            {
+                "breed": "'doodle'",
+                "name": "Molly",
+                "is_good": false
+            }'
+
+      section.content
+        h2 Other stuff
         Create an index (curl)
         pre
           code.language-javascript.
             curl 127.0.0.1
-        store 2 docs
+
+      section.content
+        h2 store 2 docs
         pre
           code.language-javascript.
             curl 127.0.0.1
-        query for 1
+
+      section.content
+        h2 query for 1
+        pre
+          code.language-javascript.
+            curl 127.0.0.1
+
 
       section
         Web UI? or just Loading JSON in browser
         aka “If I can’t see it in a browser it didn’t happen, this is DrupalCon”
 
-      section.tizzo
+      section.tizzo.chapter
         h1 Advanced Features
         // Could go over the score boosting example from Alley below
 
-      section
-        h1 Histogram
+      section.content
+        h2 Histogram
 
-      section
-        h1 Percolate
+      section.content
+        h2 Percolate
 
       section
         img(src="images/percolate-yo-dawg.jpg")
@@ -209,10 +232,45 @@ html
 
         p Matt Boynes WP Camp LA (see LA).
 
+      section.nstielau.content
+        h2 a note about capitalization
+        h3 Elasticsearch
+        h3 WordPress
+
       section.content
-        h2 Example: Boosting scores for popular content
+        h2 Example: Score boosting
         p
-          Score boosting, pulling from Google Analytics, boosting ES score to update. 22 lines.  Add query args for ES based on GA results.  Fetch top 20 GA every 2h put in cache, if post ID in 213 add a 2-point scoreboost.  Boost-factor (__boost) (default+2)
+          strong Scenario:
+          span Weight search results by popularity.
+        p
+          strong Solution:
+          span Use `function_score` with a periodically updated boost factor.
+          ul
+            li Every 2h, query Google Analytics
+            li Update custom field: "ga_boost" = 1-RANK
+            li Use `function_score` multiple natural score by "ga_boost"
+
+      section.content
+        h2 Example: Score boosting
+        p
+          strong Scenario:
+          span Weight search results by popularity.
+        p
+          strong Solution:
+          span Use `function_score` with a decay function
+          ul
+            li Every 2h, query Google Analytics
+            li Update custom field: "ga_rank" = RANK
+            li Use `function_score` multiple natural score by "ga_boost"
+        pre
+          code.language-javascript.
+            "DECAY_FUNCTION": {
+                "FIELD_NAME": {
+                      "origin": "0",
+                      "scale": "100"
+                }
+            }
+
 
       section.chapter
         h1 Devops <3 ES
