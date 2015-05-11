@@ -9,62 +9,68 @@
   <body>
     <article>
       <section>
-        <h1>Drupal and ElasticSearch</h1>
-        <h4>@tizzo y @nstielau</h4>
+        <h1>How I learned to love Elasticsearch</h1>
+        <!-- Joke about 'we'?-->
+        <h4>A love story, by @tizzo y @nstielau</h4>
       </section>
-      <section data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true">
+      <section data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true" class="content">
         <!-- TODO: Side by side-->
-        <div>
-          <h4>Nick Stielau aka @nstielau:</h4><img src="/images/nstielau.jpg" width="100">
+        <div style="float:right;">
+          <h2>Nick Stielau</h2>
+          <h3>@nstielau:</h3>
+          <h4>Panthoer, Operator</h4><img src="/images/nstielau.jpg" width="100">
         </div>
         <div>
-          <h4>Howard Tyson aka @tizzo:</h4><img src="/images/tizzo.jpg" width="100">
+          <h2>Howard Tyson</h2>
+          <h3>aka @tizzo:</h3><img src="/images/tizzo.jpg" width="100">
         </div>
       </section>
       <section class="act">
-        <h1>Act I: The Prologue</h1>
+        <h1>Who is this ElasticSearch guy, anyway?</h1>
         <!-- What do we want to for 'Act X' images? curtains-->
       </section>
-      <section class="tizzo">
-        <h3>Elasticsearch is..</h3>
+      <section class="tizzo content">
+        <h2>Elasticsearch is..</h2>
         <p>a distributed, open source search and analytics engine, designed for horizontal scalability, reliability, and easy management.
         </p>
       </section>
-      <section class="left cluster">
-        <h3>ElasticSearch is Distributed</h3>
-        <p class="wide">"Elasticsearch allows you to start small and scale horizontally as you grow. Simply add more nodes, and let the cluster automatically take advantage of the extra hardware."</p>
+      <section class="content cluster">
+        <h2>ElasticSearch is Distributed</h2>
+        <p>"Elasticsearch allows you to start small and scale horizontally as you grow. Simply add more nodes, and let the cluster automatically take advantage of the extra hardware."</p>
       </section>
-      <section class="left asf">
-        <h3>ElasticSearch is Open source</h3>
-        <p class="wide">The Apache License (/əˈpætʃi/) is a free software license written by the Apache Software Foundation (ASF). The Apache License requires preservation of the copyright notice and disclaimer.</p>
+      <section class="content asf">
+        <h2>ElasticSearch is Open source</h2>
+        <p>The Apache License (/əˈpætʃi/) is a free software license written by the Apache Software Foundation (ASF). The Apache License requires preservation of the copyright notice and disclaimer.</p>
       </section>
-      <section class="left">
-        <h3>ElasticSearch is Document-oriented</h3>
+      <section class="content">
+        <h2>Document-oriented</h2>
         <pre><code class="language-javascript">{
   "name": "Fin",
   "nickname": "Finito Burrito",
   "breed": "megamutt",
   "species": "canine"
-}
-</code></pre>
+}</code></pre>
+        <ul>
+          <li>no pre-defined schema</li>
+        </ul>
       </section>
-      <section>
+      <section class="content">
         <h2>Modern</h2>
       </section>
-      <section>
+      <section class="content">
         <h2>Near Realtime</h2>
       </section>
-      <section>
-        <h2>Based on Lucene</h2>
+      <section class="content lucene">
+        <h2>Built on Apache Lucene™</h2>
         <p>(like all good open source search)</p>
       </section>
-      <section>
-        <h2>That means Java (and the JVM)</h2>
+      <section class="content">
+        <h2>... Java (and the JVM)</h2>
       </section>
-      <section>
+      <section class="content">
         <h2>Clusterable</h2>
       </section>
-      <section>
+      <section class="content">
         <!-- TODO: We should finish breaking this up into subslides-->
         <!-- for this section.-->
         <h2>ES vs. Solr</h2>
@@ -74,26 +80,25 @@
           <li>Both supported by commercial orgs</li>
           <li>Both support HTTP indexes</li>
           <li>Competition makes stuff better!</li>
+          <li>http://solr-vs-elasticsearch.com/</li>
         </ul>
       </section>
-      <section>
-        <h2>ES vs. MySQL / MariaDB Full Text Search</h2>
-        <p>
-          <This>works out-of-the-box, but it can</This>
-          <ul>
-            <li>hit the db hard</li>
-            <li>be slow</li>
-            <li>not provide good results</li>
-          </ul>
-        </p>
+      <section class="content">
+        <h2>ES vs. MySQL Full-text Search</h2>
+        <p>This works out-of-the-box, but it can</p>
+        <ul>
+          <li>hit the db hard</li>
+          <li>be slow</li>
+          <li>not provide good results</li>
+        </ul>
       </section>
-      <section>
+      <section class="content">
         <h2>ES vs. Sphinx</h2>
         <ul>
           <li>MySQL integrated search server</li>
         </ul>
       </section>
-      <section>
+      <section class="content">
         <h2>Integrations</h2>
         <ul>
           <li>Solr has great Drupal Integration</li>
@@ -105,38 +110,57 @@
         <h1>Stop!</h1>
         <h2>DemoTime</h2>
       </section>
-      <section class="tizzo">
+      <section class="tizzo content">
         <h2>Starting instances (demo video)</h2>
         <!-- TODO: Add video-->
       </section>
-      <section class="tizzo">
+      <section class="tizzo content">
         <h2> Clustering</h2>
       </section>
       <section class="act">
         <h1>Act II:  The Nitty and The Gritty</h1>
       </section>
-      <section>
-        <h2>MVP use case with curl  (NS)</h2>
-        <pre><code class="language-javascript">curl 127.0.0.1</code></pre>
+      <section class="content">
+        <!-- http://joelabrahamsson.com/elasticsearch-101/-->
+        <h2>Inserting docs</h2>
+        <pre><code class="language-javascript">curl -XPUT "http://localhost:9200/animals/dogs/1" -d'
+{
+    "breed": "'doodle'",
+    "name": "Molly",
+    "is_good": false
+}'
+</code></pre>
+      </section>
+      <section class="content">
+        <h2>Other stuff</h2>
         <Create>an index (curl)</Create>
-        <pre><code class="language-javascript">curl 127.0.0.1</code></pre>
-        <store>2 docs</store>
-        <pre><code class="language-javascript">curl 127.0.0.1</code></pre>
-        <query>for 1</query>
+        <pre><code class="language-javascript">curl 127.0.0.1
+</code></pre>
+      </section>
+      <section class="content">
+        <h2>store 2 docs</h2>
+        <pre><code class="language-javascript">curl 127.0.0.1
+</code></pre>
+      </section>
+      <section class="content">
+        <h2>query for 1</h2>
+        <pre><code class="language-javascript">curl 127.0.0.1
+
+</code></pre>
       </section>
       <section>
         <Web>UI? or just Loading JSON in browser</Web>
         <aka>“If I can’t see it in a browser it didn’t happen, this is DrupalCon”</aka>
       </section>
-      <section class="tizzo">
+      <section class="tizzo chapter">
         <h1>Advanced Features</h1>
         <!-- Could go over the score boosting example from Alley below-->
       </section>
-      <section>
-        <h1>Histogram</h1>
+      <section class="content">
+        <h2>Histogram</h2>
       </section>
-      <section>
-        <h1>Percolate</h1>
+      <section class="content">
+        <h2>Percolate</h2>
       </section>
       <section><img src="images/percolate-yo-dawg.jpg"></section>
       <section>
@@ -188,40 +212,61 @@
           <Howard>to write-up/screen capture</Howard>
         </p>
       </section>
-      <section>
-        <h2>WordPress (NS)</h2>
-        <p>
-          <never>a coalesence around Drupal, acquia etc put weigth behind solr.  Done so well, not much other need. Setup solr is painful.  "In WP, core search is about as bad as Drupals.  Select title like blah blah sort by date". 500k nodes is unusable, WP came later, and ES is way better for web-indexing.  Much much easier to install & configure, easier to cluster, communicates with JSON, more options for weighting content, or, even if it does have the same features, it makes them easier to access.  Solr is pretty good. Matt Boynes did searchpress, drop-in search replacement for WP (on github).</never>
-        </p>
-        <p>
-          <ES>Docs is dense, ask someone Explain it to me like a 5 year old.</ES>
-        </p>
+      <section class="nstielau content">
+        <h2>WordPress</h2>
+        <p>never a coalesence around Drupal, acquia etc put weigth behind solr.  Done so well, not much other need. Setup solr is painful.  "In WP, core search is about as bad as Drupals.  Select title like blah blah sort by date". 500k nodes is unusable, WP came later, and ES is way better for web-indexing.  Much much easier to install & configure, easier to cluster, communicates with JSON, more options for weighting content, or, even if it does have the same features, it makes them easier to access.  Solr is pretty good. Matt Boynes did searchpress, drop-in search replacement for WP (on github).</p>
+        <p>ES Docs is dense, ask someone Explain it to me like a 5 year old.</p>
         <One>suggestion: Ornately docs, but not some much examples....</One>
-        <p>
-          <Really>new apple to a rotten apple.  WP-Query-Object, generally really specific to MySQL.  Kinda like Views, you can go off the rails.  Matt Boynes, WP-Query-Object subclass, to run WP out of ES. LEFT JOIN BLAH, no, let Lucene do it.  I don't want to deal with.</Really>
-        </p>
-        <p>
-          <Matt>Boynes WP Camp LA (see LA).</Matt>
+        <p>Really new apple to a rotten apple.  WP-Query-Object, generally really specific to MySQL.  Kinda like Views, you can go off the rails.  Matt Boynes, WP-Query-Object subclass, to run WP out of ES. LEFT JOIN BLAH, no, let Lucene do it.  I don't want to deal with.</p>
+        <p>Matt Boynes WP Camp LA (see LA).</p>
+      </section>
+      <section class="nstielau content">
+        <h2>a note about capitalization</h2>
+        <h3>Elasticsearch</h3>
+        <h3>WordPress</h3>
+      </section>
+      <section class="content">
+        <h2>Example: Score boosting</h2>
+        <p><strong>Scenario:</strong><span>Weight search results by popularity.</span></p>
+        <p><strong>Solution:</strong><span>Use `function_score` with a periodically updated boost factor.</span>
+          <ul>
+            <li>Every 2h, query Google Analytics</li>
+            <li>Update custom field: "ga_boost" = 1-RANK</li>
+            <li>Use `function_score` multiple natural score by "ga_boost"</li>
+          </ul>
         </p>
       </section>
-      <section>
-        <h2>Example: Boosting scores for popular content</h2>
-        <p>
-          <Score>boosting, pulling from Google Analytics, boosting ES score to update. 22 lines.  Add query args for ES based on GA results.  Fetch top 20 GA every 2h put in cache, if post ID in 213 add a 2-point scoreboost.  Boost-factor (__boost) (default+2)</Score>
+      <section class="content">
+        <h2>Example: Score boosting</h2>
+        <p><strong>Scenario:</strong><span>Weight search results by popularity.</span></p>
+        <p><strong>Solution:</strong><span>Use `function_score` with a decay function</span>
+          <ul>
+            <li>Every 2h, query Google Analytics</li>
+            <li>Update custom field: "ga_rank" = RANK</li>
+            <li>Use `function_score` multiple natural score by "ga_boost"</li>
+          </ul>
         </p>
+        <pre><code class="language-javascript">"DECAY_FUNCTION": {
+    "FIELD_NAME": {
+          "origin": "0",
+          "scale": "100"
+    }
+}
+
+</code></pre>
       </section>
-      <section>
-        <h1>Ops</h1>
+      <section class="chapter">
+        <h1>Devops <3 ES</h1>
       </section>
-      <section>
-        <h1>ELK Intro, value prop (NS)</h1>
+      <section class="content nstielau">
+        <h2>ELK Intro, value prop</h2>
         <ul>
           <lu>What are rich logs?</lu>
           <li>Logstash</li>
         </ul>
       </section>
-      <section>
-        <h2>How do I get me data into ELK (HT)?</h2>
+      <section class="content tizzo">
+        <h2>How do I get my data into ELK?</h2>
         <ul>
           <li>Logstash</li>
           <li>WatchDog (Amitai: Log http module)</li>
@@ -231,8 +276,8 @@
           <li>Parsing in Logstash (enrichifying™)</li>
         </ul>
       </section>
-      <section>
-        <h1>Use-cases (NS)</h1>
+      <section class="nstielau content">
+        <h2>Use-cases</h2>
         <ul>
           <li>Security</li>
           <li>Exceptions</li>
@@ -244,10 +289,10 @@
           <li>brute-force password guessing</li>
         </ul>
       </section>
-      <section>
-        <h1>Kibana, ELK Demo Video (HT)</h1>
+      <section class="content">
+        <h2>Kibana, ELK Demo Video (HT)</h2>
       </section>
-      <section>
+      <section class="content">
         <h2>Up and running with ES</h2>
         <ul>
           <li>DIY (HT)</li>
@@ -256,11 +301,11 @@
           <li>To the future!</li>
         </ul>
       </section>
-      <section>
+      <section class="content">
         <h2>securing ES</h2>
         <p><a>defaults are super open</a><a>http://brudtkuhl.com/securing-elasticsearch/</a></p>
       </section>
-      <section>
+      <section class="content">
         <h2>Hosted ElasticSearch</h2>
         <ul>
           <li>host near you</li>
@@ -273,35 +318,23 @@
           <li>https://bonsai.io/</li>
         </ul>
       </section>
-      <section>
-        <h3>How to sneak in ES (NS)</h3>
+      <section class="content nstielau">
+        <h2>How to sneak in ES</h2>
         <ul>
           <li>Use for ops</li>
           <li>show is awesome</li>
         </ul>
       </section>
-      <section>
-        <h1>References</h1>
+      <section class="content">
+        <h2>References</h2>
         <ul>
           <li>ES Docs</li>
           <li>Blog posts, etc</li>
           <li>Our Docker stuff</li>
         </ul>
       </section>
-      <section>
-        <h1>Image Credits</h1>
-      </section>
-      <section>
-        <h2>Keyboard Interaction</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a></h3>
-      </section>
-      <section>
-        <h2>Touch Interaction</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-touch">bespoke-touch</a></h3>
-      </section>
-      <section>
-        <h2>Responsive Slides</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-scale">bespoke-scale</a></h3>
+      <section class="content">
+        <h2>Image Credits</h2>
       </section>
       <section>
         <h2>Bullet List</h2>
