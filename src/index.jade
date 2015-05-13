@@ -128,6 +128,17 @@ html
         h1 Act II:  The Nitty and The Gritty
 
       section.content
+        h2 Create an index (curl)
+        pre
+          code.language-javascript.
+            curl -XPUT 'http://localhost:9200/twitter/' -d '
+              index :
+              number_of_shards : 3
+              number_of_replicas : 2
+            '
+            curl 127.0.0.1
+
+      section.content
         // http://joelabrahamsson.com/elasticsearch-101/
         h2 Inserting docs
         pre
@@ -138,13 +149,6 @@ html
                 "name": "Molly",
                 "is_good": false
             }'
-
-      section.content
-        h2 Other stuff
-        Create an index (curl)
-        pre
-          code.language-javascript.
-            curl 127.0.0.1
 
       section.content
         h2 store 2 docs
