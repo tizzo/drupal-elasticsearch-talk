@@ -47,44 +47,45 @@ html
 
       section.content
         h2 Document-oriented
-        pre
+        pre(style="overflow:hidden;")
           code.language-javascript.
-            {
-              "name": "Fin",
-              "nickname": "Finito Burrito",
-              "breed": "megamutt",
-              "species": "canine"
-            }
-        ul
-          li no pre-defined schema
-
-      section.content
-        h2 Modern
+            [
+              {
+                "name": "Fin",
+                "nickname": "Finito Burrito",
+                "breed": "megamutt",
+                "species": "canine"
+              },
+              {
+                "name": "Stieggie",
+                "breed": "German Wire-haired Pointer",
+                "family_tree": {
+                  "father": "Deus"
+                }
+                "species": "canine"
+              }
+            ]
+        // no pre-defined schema
+        // Allows nested documents
 
       section.content
         h2 Near Realtime
 
       section.content.lucene
         h2 Built on Apache Lucene™
+        p Just like:
+        ul
+          li Solr
+          li (some?) LinkedIn search functionality
         p (like all good open source search)
 
       section.content
-        h2 ... Java (and the JVM)
+        h2 ...Java (and the JVM)
+        p
 
       section.content
         h2 Clusterable
-
-      section.content
-        // TODO: We should finish breaking this up into subslides
-        // for this section.
-        h2 ES vs. Solr
-        ul
-          li How does it compare Solr? (NS as Solr vs. HT as ES, i.e. mac vs. pc)
-          li Both Apache 2 Licensed
-          li Both supported by commercial orgs
-          li Both support HTTP indexes
-          li Competition makes stuff better!
-          li http://solr-vs-elasticsearch.com/
+        img(src="/images/es_head.png" width="600")
 
       section.content
         h2 ES vs. MySQL Full-text Search
@@ -95,27 +96,34 @@ html
           li not provide good results
 
       section.content
-        h2 ES vs. Sphinx
+        // TODO: We should finish breaking this up into subslides
+        // for this section.
+        h2 ES vs. Solr
+        //  (NS as Solr vs. HT as ES, i.e. mac vs. pc)
         ul
-          li MySQL integrated search server
+          li How does it compare Solr?
+          li Both Apache 2 Licensed
+          li Both supported by commercial orgs
+          li Both support HTTP indexes
+          li Competition makes stuff better!
+          li http://solr-vs-elasticsearch.com/
 
       section.content
-        h2 Integrations
-        ul
-          li Solr has great Drupal Integration
-          li ES has great ELK/Kibana Integrations
-          li More and more ES examples/plugins/modules, etc
+        h2.sphinx ES vs.
+
+      section.nstielau.quote.apple
+        p "I guess comparing Elasticsearch to Solr is apples to apples, but really it's like comaping a new apple to a rotten apple." -Elasticsearch User
+
+      section.nstielau.content
+        h2 Bonus! sane capitalization
+        pre
+          code.language-javascript= '<?php capital_P_dangit( "WordPress" ); ?>'
+        pre
+          code.language-javascript= '<?php captial_E_duh( "Elasticsearch" );'
 
       section
         h1 Stop!
         h2 DemoTime
-
-      section.tizzo.content
-        h2 Starting instances (demo video)
-        // TODO: Add video
-
-      section.tizzo.content
-        h2  Clustering
 
       section.act
         h1 Act II:  The Nitty and The Gritty
@@ -156,9 +164,24 @@ html
         Web UI? or just Loading JSON in browser
         aka “If I can’t see it in a browser it didn’t happen, this is DrupalCon”
 
+      section.nstielau
+        img(src="/images/orcas.png" width="600")
+
       section.tizzo.chapter
         h1 Advanced Features
         // Could go over the score boosting example from Alley below
+
+      section.nstielau.content.merlin
+        h2 Clarks' Laws vis-á-vis ES
+        ol
+          li When a distinguished but elderly scientist states that something is possible, he is almost certainly right. When he states that something is impossible, he is very probably wrong.
+
+          li The only way of discovering the limits of the possible is to venture a little way past them into the impossible.
+
+          li Any sufficiently advanced technology is
+            br
+            strong  indistinguishable from magic.
+
 
       section.content
         h2 Histogram
@@ -214,12 +237,12 @@ html
       section.act
         h1 Act III: ElasticSearch use-cases
 
-      section
-        h1 Drupal Modules (HT)
-        p
-          Search API Elasticsearch
-          a http://www.sitepoint.com/install-integrate-elasticsearch-drupal/
-          Howard to write-up/screen capture
+      section.chapter.tizzo
+        h1 Integrating Drupal with Elasticsearch
+        //p
+          //Search API Elasticsearch
+          //a http://www.sitepoint.com/install-integrate-elasticsearch-drupal/
+          //Howard to write-up/screen capture
 
       section.nstielau.content
         h2 WordPress
@@ -233,11 +256,6 @@ html
         p Matt Boynes WP Camp LA (see LA).
 
       section.nstielau.content
-        h2 a note about capitalization
-        h3 Elasticsearch
-        h3 WordPress
-
-      section.content
         h2 Example: Score boosting
         p
           strong Scenario:
@@ -250,8 +268,8 @@ html
             li Update custom field: "ga_boost" = 1-RANK
             li Use `function_score` multiple natural score by "ga_boost"
 
-      section.content
-        h2 Example: Score boosting
+      section.tizzo.content
+        h2 Example: Score boosting++
         p
           strong Scenario:
           span Weight search results by popularity.
@@ -271,6 +289,14 @@ html
                 }
             }
 
+      section.nstielau.content
+        h2 pow("Score boosting", 2)
+        p
+          strong Scenario:
+          span Weight search results by popularity.
+        p
+          strong Solution:
+          Use Elasticsearch and figure it out.
 
       section.chapter
         h1 Devops <3 ES
@@ -282,7 +308,7 @@ html
           li Logstash
 
       section.content.tizzo
-        h2 How do I get my data into ELK?
+        h2 Getting my data into ELK
         ul
           li Logstash
           li WatchDog (Amitai: Log http module)
@@ -336,6 +362,26 @@ html
         ul
           li Use for ops
           li show is awesome
+
+      section.content
+        h3 "make sure you mention that elasticsearch is a very good primary data store for critical mutable data." - @joemiller
+
+        ul
+
+          li
+            a(href="https://aphyr.com/posts/323-call-me-maybe-elasticsearch-1-5-0") Aphyr's "Call me maybe" for Elasticsearch 1.5.0
+
+          li
+            a(href="http://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html") Elasticsearch Resiliency Status
+
+      section.content
+        p ELK
+
+      section.content
+         p CHELK.
+
+      section.content
+        p EE EEE (LK).
 
       section.content
         h2 References
