@@ -14,15 +14,14 @@
         <h4>A love story, by @tizzo y @nstielau</h4>
       </section>
       <section data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true" class="content">
-        <!-- TODO: Side by side-->
         <div style="float:right;">
           <h2>Nick Stielau</h2>
           <h3>@nstielau:</h3>
-          <h4>Panthoer, Operator</h4><img src="/images/nstielau.jpg" width="100">
+          <h4>Panthoer, Operator</h4><img src="images/nstielau.jpg" width="100">
         </div>
         <div>
           <h2>Howard Tyson</h2>
-          <h3>aka @tizzo:</h3><img src="/images/tizzo.jpg" width="100">
+          <h3>aka @tizzo:</h3><img src="images/tizzo.jpg" width="100">
         </div>
       </section>
       <section class="act">
@@ -124,6 +123,16 @@
         <h1>Act II:  The Nitty and The Gritty</h1>
       </section>
       <section class="content">
+        <h2>Create an index (curl)</h2>
+        <pre><code class="language-javascript">curl -XPUT 'http://localhost:9200/twitter/' -d '
+  index :
+  number_of_shards : 3
+  number_of_replicas : 2
+'
+curl 127.0.0.1
+</code></pre>
+      </section>
+      <section class="content">
         <!-- http://joelabrahamsson.com/elasticsearch-101/-->
         <h2>Inserting docs</h2>
         <pre><code class="language-javascript">curl -XPUT "http://localhost:9200/animals/dogs/1" -d'
@@ -132,12 +141,6 @@
     "name": "Molly",
     "is_good": false
 }'
-</code></pre>
-      </section>
-      <section class="content">
-        <h2>Other stuff</h2>
-        <Create>an index (curl)</Create>
-        <pre><code class="language-javascript">curl 127.0.0.1
 </code></pre>
       </section>
       <section class="content">
@@ -155,7 +158,7 @@
         <Web>UI? or just Loading JSON in browser</Web>
         <aka>“If I can’t see it in a browser it didn’t happen, this is DrupalCon”</aka>
       </section>
-      <section class="nstielau"><img src="/images/orcas.png" width="600"></section>
+      <section class="nstielau"><img src="images/orcas.png" width="600"></section>
       <section class="tizzo chapter">
         <h1>Advanced Features</h1>
         <!-- Could go over the score boosting example from Alley below-->
@@ -409,5 +412,6 @@
       </section>
     </article>
     <script src="build/build.js"></script>
+    <script src="bower_components/prism/prism.js"></script>
   </body>
 </html>
