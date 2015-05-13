@@ -44,44 +44,43 @@
       </section>
       <section class="content">
         <h2>Document-oriented</h2>
-        <pre><code class="language-javascript">{
-  "name": "Fin",
-  "nickname": "Finito Burrito",
-  "breed": "megamutt",
-  "species": "canine"
-}</code></pre>
-        <ul>
-          <li>no pre-defined schema</li>
-        </ul>
-      </section>
-      <section class="content">
-        <h2>Modern</h2>
+        <pre style="overflow:hidden;"><code class="language-javascript">[
+  {
+    "name": "Fin",
+    "nickname": "Finito Burrito",
+    "breed": "megamutt",
+    "species": "canine"
+  },
+  {
+    "name": "Stieggie",
+    "breed": "German Wire-haired Pointer",
+    "family_tree": {
+      "father": "Deus"
+    }
+    "species": "canine"
+  }
+]</code></pre>
+        <!-- no pre-defined schema-->
+        <!-- Allows nested documents-->
       </section>
       <section class="content">
         <h2>Near Realtime</h2>
       </section>
       <section class="content lucene">
         <h2>Built on Apache Lucene™</h2>
+        <p>Just like:</p>
+        <ul>
+          <li>Solr</li>
+          <li>(some?) LinkedIn search functionality</li>
+        </ul>
         <p>(like all good open source search)</p>
       </section>
       <section class="content">
-        <h2>... Java (and the JVM)</h2>
+        <h2>...Java (and the JVM)</h2>
+        <p></p>
       </section>
       <section class="content">
-        <h2>Clusterable</h2>
-      </section>
-      <section class="content">
-        <!-- TODO: We should finish breaking this up into subslides-->
-        <!-- for this section.-->
-        <h2>ES vs. Solr</h2>
-        <ul>
-          <li>How does it compare Solr? (NS as Solr vs. HT as ES, i.e. mac vs. pc)</li>
-          <li>Both Apache 2 Licensed</li>
-          <li>Both supported by commercial orgs</li>
-          <li>Both support HTTP indexes</li>
-          <li>Competition makes stuff better!</li>
-          <li>http://solr-vs-elasticsearch.com/</li>
-        </ul>
+        <h2>Clusterable</h2><img src="/images/es_head.png" width="600">
       </section>
       <section class="content">
         <h2>ES vs. MySQL Full-text Search</h2>
@@ -93,29 +92,33 @@
         </ul>
       </section>
       <section class="content">
-        <h2>ES vs. Sphinx</h2>
+        <!-- TODO: We should finish breaking this up into subslides-->
+        <!-- for this section.-->
+        <h2>ES vs. Solr</h2>
+        <!--  (NS as Solr vs. HT as ES, i.e. mac vs. pc)-->
         <ul>
-          <li>MySQL integrated search server</li>
+          <li>How does it compare Solr?</li>
+          <li>Both Apache 2 Licensed</li>
+          <li>Both supported by commercial orgs</li>
+          <li>Both support HTTP indexes</li>
+          <li>Competition makes stuff better!</li>
+          <li>http://solr-vs-elasticsearch.com/</li>
         </ul>
       </section>
       <section class="content">
-        <h2>Integrations</h2>
-        <ul>
-          <li>Solr has great Drupal Integration</li>
-          <li>ES has great ELK/Kibana Integrations</li>
-          <li>More and more ES examples/plugins/modules, etc</li>
-        </ul>
+        <h2 class="sphinx">ES vs.</h2>
+      </section>
+      <section class="nstielau quote apple">
+        <p>"I guess comparing Elasticsearch to Solr is apples to apples, but really it's like comaping a new apple to a rotten apple." -Elasticsearch User</p>
+      </section>
+      <section class="nstielau content">
+        <h2>Bonus! sane capitalization</h2>
+        <pre><code class="language-javascript">&lt;?php capital_P_dangit( &quot;WordPress&quot; ); ?&gt;</code></pre>
+        <pre><code class="language-javascript">&lt;?php captial_E_duh( &quot;Elasticsearch&quot; );</code></pre>
       </section>
       <section>
         <h1>Stop!</h1>
         <h2>DemoTime</h2>
-      </section>
-      <section class="tizzo content">
-        <h2>Starting instances (demo video)</h2>
-        <!-- TODO: Add video-->
-      </section>
-      <section class="tizzo content">
-        <h2> Clustering</h2>
       </section>
       <section class="act">
         <h1>Act II:  The Nitty and The Gritty</h1>
@@ -152,9 +155,18 @@
         <Web>UI? or just Loading JSON in browser</Web>
         <aka>“If I can’t see it in a browser it didn’t happen, this is DrupalCon”</aka>
       </section>
+      <section class="nstielau"><img src="/images/orcas.png" width="600"></section>
       <section class="tizzo chapter">
         <h1>Advanced Features</h1>
         <!-- Could go over the score boosting example from Alley below-->
+      </section>
+      <section class="nstielau content merlin">
+        <h2>Clarks' Laws vis-á-vis ES</h2>
+        <ol>
+          <li>When a distinguished but elderly scientist states that something is possible, he is almost certainly right. When he states that something is impossible, he is very probably wrong.</li>
+          <li>The only way of discovering the limits of the possible is to venture a little way past them into the impossible.</li>
+          <li>Any sufficiently advanced technology is<br><strong> indistinguishable from magic.</strong></li>
+        </ol>
       </section>
       <section class="content">
         <h2>Histogram</h2>
@@ -205,12 +217,14 @@
       <section class="act">
         <h1>Act III: ElasticSearch use-cases</h1>
       </section>
-      <section>
-        <h1>Drupal Modules (HT)</h1>
-        <p>
-          <Search>API Elasticsearch</Search><a>http://www.sitepoint.com/install-integrate-elasticsearch-drupal/</a>
-          <Howard>to write-up/screen capture</Howard>
-        </p>
+      <section class="chapter tizzo">
+        <h1>Integrating Drupal with Elasticsearch</h1>
+        <!--p
+        //Search API Elasticsearch
+        //a http://www.sitepoint.com/install-integrate-elasticsearch-drupal/
+        //Howard to write-up/screen capture
+        
+        -->
       </section>
       <section class="nstielau content">
         <h2>WordPress</h2>
@@ -221,11 +235,6 @@
         <p>Matt Boynes WP Camp LA (see LA).</p>
       </section>
       <section class="nstielau content">
-        <h2>a note about capitalization</h2>
-        <h3>Elasticsearch</h3>
-        <h3>WordPress</h3>
-      </section>
-      <section class="content">
         <h2>Example: Score boosting</h2>
         <p><strong>Scenario:</strong><span>Weight search results by popularity.</span></p>
         <p><strong>Solution:</strong><span>Use `function_score` with a periodically updated boost factor.</span>
@@ -236,8 +245,8 @@
           </ul>
         </p>
       </section>
-      <section class="content">
-        <h2>Example: Score boosting</h2>
+      <section class="tizzo content">
+        <h2>Example: Score boosting++</h2>
         <p><strong>Scenario:</strong><span>Weight search results by popularity.</span></p>
         <p><strong>Solution:</strong><span>Use `function_score` with a decay function</span>
           <ul>
@@ -252,8 +261,14 @@
           "scale": "100"
     }
 }
-
 </code></pre>
+      </section>
+      <section class="nstielau content">
+        <h2>pow("Score boosting", 2)</h2>
+        <p><strong>Scenario:</strong><span>Weight search results by popularity.</span></p>
+        <p><strong>Solution:</strong>
+          <Use>Elasticsearch and figure it out.</Use>
+        </p>
       </section>
       <section class="chapter">
         <h1>Devops <3 ES</h1>
@@ -266,7 +281,7 @@
         </ul>
       </section>
       <section class="content tizzo">
-        <h2>How do I get my data into ELK?</h2>
+        <h2>Getting my data into ELK</h2>
         <ul>
           <li>Logstash</li>
           <li>WatchDog (Amitai: Log http module)</li>
@@ -324,6 +339,22 @@
           <li>Use for ops</li>
           <li>show is awesome</li>
         </ul>
+      </section>
+      <section class="content">
+        <h3>"make sure you mention that elasticsearch is a very good primary data store for critical mutable data." - @joemiller</h3>
+        <ul>
+          <li><a href="https://aphyr.com/posts/323-call-me-maybe-elasticsearch-1-5-0">Aphyr's "Call me maybe" for Elasticsearch 1.5.0</a></li>
+          <li><a href="http://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html">Elasticsearch Resiliency Status</a></li>
+        </ul>
+      </section>
+      <section class="content">
+        <p>ELK</p>
+      </section>
+      <section class="content">
+        <p>CHELK.</p>
+      </section>
+      <section class="content">
+        <p>EE EEE (LK).</p>
       </section>
       <section class="content">
         <h2>References</h2>
