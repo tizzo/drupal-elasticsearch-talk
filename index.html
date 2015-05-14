@@ -9,90 +9,103 @@
   <body>
     <article>
       <section>
-        <h1>How I learned to love Elasticsearch</h1>
-        <!-- Joke about 'we'?-->
+        <h1 style="font-size:3em">How I learned to love Elasticsearch</h1><img src="images/ride-the-bomb.gif">
         <h4>A love story, by @tizzo y @nstielau</h4>
       </section>
       <section data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true" class="content">
-        <div style="float:right;">
-          <h2>Nick Stielau</h2>
-          <h3>@nstielau:</h3>
-          <h4>Panthoer, Operator</h4><img src="images/nstielau.jpg" width="100">
-        </div>
-        <div>
-          <h2>Howard Tyson</h2>
-          <h3>aka @tizzo:</h3><img src="images/tizzo.jpg" width="100">
-        </div>
+        <h2>Nick Stielau</h2>
+        <h3>@nstielau</h3>
+        <h3>Director of Engineering at Pantheon</h3>
+        <h3>Smooth operator</h3>
       </section>
-      <section class="act">
-        <h1>Who is this ElasticSearch guy, anyway?</h1>
-        <!-- What do we want to for 'Act X' images? curtains-->
+      <section data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true" class="content">
+        <h2>Howard Tyson</h2>
+        <h3>@tizzo</h3>
+        <h4>Zivtechnician</h4><img src="images/tizzo.jpg" width="100">
       </section>
-      <section class="tizzo content">
-        <h2>Elasticsearch is..</h2>
-        <p>a distributed, open source search and analytics engine, designed for horizontal scalability, reliability, and easy management.
-        </p>
+      <section class="chapter">
+        <h1>We're going to make you love Elasticsearch</h1>
+      </section>
+      <section class="content">
+        <h2>How we'll do it</h2>
+        <ul>
+          <li>Elasticsearch Overview</li>
+          <li>Search Engine Comparisons</li>
+          <li>CLI Examples</li>
+          <li>Fancypants Use-cases</li>
+          <li>Drupal and Elasticsearch</li>
+          <li>Devops and Elasticsearch</li>
+          <li>Playing with Drupal log commits</li>
+        </ul>
+      </section>
+      <section class="content">
+        <h2>Slides, examples, demos</h2>
+        <h3>https://github.com/tizzo/drupal-elasticsearch-talk</h3>
+      </section>
+      <section class="tizzo chapter">
+        <h1>Elasticsearch is..</h1>
+        <h3>a distributed, open source search and analytics engine, designed for horizontal scalability, reliability, and easy management.
+        </h3>
       </section>
       <section class="content cluster">
-        <h2>ElasticSearch is Distributed</h2>
+        <h2>Distributed</h2>
         <p>"Elasticsearch allows you to start small and scale horizontally as you grow. Simply add more nodes, and let the cluster automatically take advantage of the extra hardware."</p>
       </section>
       <section class="content asf">
-        <h2>ElasticSearch is Open source</h2>
+        <h2>Open source</h2>
         <p>The Apache License (/əˈpætʃi/) is a free software license written by the Apache Software Foundation (ASF). The Apache License requires preservation of the copyright notice and disclaimer.</p>
       </section>
       <section class="content">
         <h2>Document-oriented</h2>
+        <ul>
+          <li>No pre-defined schema</li>
+          <li>Allows nested documents</li>
+        </ul>
         <pre style="overflow:hidden;"><code class="language-javascript">[
   {
-    "name": "Fin",
-    "nickname": "Finito Burrito",
-    "breed": "megamutt",
-    "species": "canine"
-  },
-  {
-    "name": "Stieggie",
-    "breed": "German Wire-haired Pointer",
-    "family_tree": {
-      "father": "Deus"
-    }
-    "species": "canine"
+    "commit": "b03932be472a7198980cd73e5c532dc34e0c9aea",
+    "committer_name": "bob",
+    "author_name": "bob",
+    "date": "Tue May 12 15:40:44 2015 -0700",
+    "message": "Issue-2457427-by-Crell-Bad-error-handling-of-invalid-Entity-definition",
+    "@timestamp": "2015-05-12T15:40:44-07:00"
   }
-]</code></pre>
-        <!-- no pre-defined schema-->
-        <!-- Allows nested documents-->
+]
+</code></pre>
       </section>
-      <section class="content">
-        <h2>Near Realtime</h2>
+      <section class="content alf">
+        <h2>Near Realtime*</h2>
+        <p style="font-size:1.2em; color: white;width:300px;padding-top:250px;">*The difference between realtime and near-realtime is that near-realtime is not realtime.</p>
       </section>
       <section class="content lucene">
         <h2>Built on Apache Lucene™</h2>
-        <p>Just like:</p>
-        <ul>
-          <li>Solr</li>
-          <li>(some?) LinkedIn search functionality</li>
-        </ul>
-        <p>(like all good open source search)</p>
-      </section>
-      <section class="content">
-        <h2>...Java (and the JVM)</h2>
-        <p></p>
+        <h3>Lucene is the search smarts</h3>
       </section>
       <section class="content">
         <h2>Clusterable</h2><img src="/images/es_head.png" width="600">
       </section>
       <section class="content">
-        <h2>ES vs. MySQL Full-text Search</h2>
-        <p>This works out-of-the-box, but it can</p>
+        <h2>Clusterable: Data security</h2>
+        <h3>"make sure you mention that elasticsearch is a very good primary data store for critical mutable data." - @joemiller</h3>
+        <h3>"To be precise, Elasticsearch’s transaction log does not put your data safety first. It puts it anywhere from zero to five seconds later." -Aphyr</h3>
         <ul>
-          <li>hit the db hard</li>
-          <li>be slow</li>
-          <li>not provide good results</li>
+          <li><a href="https://aphyr.com/posts/323-call-me-maybe-elasticsearch-1-5-0">Aphyr's "Call me maybe" for Elasticsearch 1.5.0</a></li>
+          <li><a href="http://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html">Elasticsearch Resiliency Status</a></li>
+        </ul>
+      </section>
+      <section class="chapter">
+        <h1>Dude, I've been searching for nodes since like, 2005</h1>
+      </section>
+      <section class="content">
+        <h2>ES vs. MySQL Full-text Search</h2>
+        <h3>This works out-of-the-box, but it can</h3>
+        <ul>
+          <li>Hit the database hard</li>
+          <li>Be slow</li>
+          <li>Uninspired search results</li>
         </ul>
       </section>
       <section class="content">
-        <!-- TODO: We should finish breaking this up into subslides-->
-        <!-- for this section.-->
         <h2>ES vs. Solr</h2>
         <!--  (NS as Solr vs. HT as ES, i.e. mac vs. pc)-->
         <ul>
@@ -104,64 +117,119 @@
           <li>http://solr-vs-elasticsearch.com/</li>
         </ul>
       </section>
-      <section class="content">
-        <h2 class="sphinx">ES vs.</h2>
-      </section>
       <section class="nstielau quote apple">
         <p>"I guess comparing Elasticsearch to Solr is apples to apples, but really it's like comaping a new apple to a rotten apple." -Elasticsearch User</p>
       </section>
+      <section class="content sphinx">
+        <h2 class="sphinx">ES vs.</h2>
+      </section>
       <section class="nstielau content">
         <h2>Bonus! sane capitalization</h2>
-        <pre><code class="language-javascript">&lt;?php capital_P_dangit( &quot;WordPress&quot; ); ?&gt;</code></pre>
-        <pre><code class="language-javascript">&lt;?php captial_E_duh( &quot;Elasticsearch&quot; );</code></pre>
+        <h3>sane...</h3>
+        <pre style="font-size:1.2em;"><code class="language-javascript">&lt;?php captial_E_duh( &quot;Elasticsearch&quot; );</code></pre>
+        <h3>uh...</h3>
+        <pre style="font-size:1.2em;"><code class="language-javascript">&lt;?php capital_P_dangit( &quot;WordPress&quot; ); ?&gt;</code></pre>
       </section>
-      <section>
-        <h1>Stop!</h1>
-        <h2>DemoTime</h2>
-      </section>
-      <section class="act">
-        <h1>Act II:  The Nitty and The Gritty</h1>
-      </section>
+      <session class="chapter">
+        <h1>Ain't no Party like a cURL Party</h1>
+      </session>
       <section class="content">
         <h2>Create an index (curl)</h2>
-        <pre><code class="language-javascript">curl -XPUT 'http://localhost:9200/twitter/' -d '
-  index :
-  number_of_shards : 3
-  number_of_replicas : 2
+        <pre><code class="language-javascript">curl -XPUT 'http://localhost:9200/logstash-commits/' -d '
+  index:
+    number_of_shards : 1
+    number_of_replicas : 2
 '
 curl 127.0.0.1
 </code></pre>
       </section>
       <section class="content">
         <!-- http://joelabrahamsson.com/elasticsearch-101/-->
-        <h2>Inserting docs</h2>
-        <pre><code class="language-javascript">curl -XPUT "http://localhost:9200/animals/dogs/1" -d'
-{
-    "breed": "'doodle'",
-    "name": "Molly",
-    "is_good": false
+        <h2>Inserting docs</h2><strong>Request:</strong>
+        <pre><code class="language-javascript">curl -XPOST "http://localhost:9200/logstash-commits/logs" -d' {
+  "commit": "bfdcc65a85a2ae3af5025f8d0a05779fbb59c621",
+  "committer_name": "xjm",
+  "author_name": "xjm",
+  "date": "Tue May 12 15:14:13 2015 -0700",
+  "message": "Issue-2459777 fixing stuff",
+  "@timestamp": "2015-05-12T15:14:13-07:00"
 }'
-</code></pre>
-      </section>
-      <section class="content">
-        <h2>store 2 docs</h2>
-        <pre><code class="language-javascript">curl 127.0.0.1
-</code></pre>
-      </section>
-      <section class="content">
-        <h2>query for 1</h2>
-        <pre><code class="language-javascript">curl 127.0.0.1
+
+</code></pre><strong>Response:</strong>
+        <pre><code class="language-javascript">{
+    "ok": true,
+    "_index": "logstash-commits",
+    "_type": "logs",
+    "_id": 1,
+    "_version": 1
+}
+
 
 </code></pre>
       </section>
-      <section>
-        <Web>UI? or just Loading JSON in browser</Web>
-        <aka>“If I can’t see it in a browser it didn’t happen, this is DrupalCon”</aka>
+      <section class="content">
+        <!-- http://joelabrahamsson.com/elasticsearch-101/-->
+        <h2>Updating docs</h2><strong>Request:</strong>
+        <pre><code class="language-javascript">curl -XPUT "http://localhost:9200/logstash-commits/logs/1" -d' {
+  "commit": "bfdcc65a85a2ae3af5025f8d0a05779fbb59c621",
+  "committer_name": "xjm",
+  "author_name": "xjm",
+  "date": "Tue May 12 15:14:13 2015 -0700",
+  "message": "Issue-2459777 fixing stuff",
+  "@timestamp": "2015-05-12T15:14:13-07:00"
+}'
+
+</code></pre><strong>Response:</strong>
+        <pre><code class="language-javascript">{
+    "ok": true,
+    "_index": "logstash-commits",
+    "_type": "logs",
+    "_id": 1,
+    "_version": 2
+}
+</code></pre>
+      </section>
+      <section class="content">
+        <h2>Retreiving a doc</h2><strong>Request:</strong>
+        <pre><code class="language-javascript">curl -XGET "http://localhost:9200/logstash-commits/logs/1"
+</code></pre><strong>Response:</strong>
+        <pre><code class="language-javascript">{
+  "_index": "logstash-commits",
+  "_type": "logs",
+  "_id": 1,
+  "_version": 2,
+  "exists": true,
+  "_source": {
+    "commit": "bfdcc65a85a2ae3af5025f8d0a05779fbb59c621",
+    "committer_name": "xjm",
+    "author_name": "xjm",
+    "date": "Tue May 12 15:14:13 2015 -0700",
+    "message": "Issue-2459777 fixing stuff",
+    "@timestamp": "2015-05-12T15:14:13-07:00"
+  }
+}
+</code></pre>
+      </section>
+      <section class="content">
+        <h2>Searching</h2>
+        <h3>Find commits by xjm matching 'Views'</h3>
+        <p><strong>Query:</strong><span> Views</span></p>
+        <p><strong>Filter:</strong><span> xjm</span></p>
+        <pre><code class="language-javascript">curl -XPOST "http://localhost:9200/_search" -d'{
+    "query": {
+        "query_string": {
+            "query": "message:Views"
+        }
+    },
+    "filter": {
+      "term": {"author_name": "xjm"}
+    }
+}'
+</code></pre>
       </section>
       <section class="nstielau"><img src="images/orcas.png" width="600"></section>
       <section class="tizzo chapter">
-        <h1>Advanced Features</h1>
-        <!-- Could go over the score boosting example from Alley below-->
+        <h1>BRING IT!</h1>
       </section>
       <section class="nstielau content merlin">
         <h2>Clarks' Laws vis-á-vis ES</h2>
@@ -172,84 +240,10 @@ curl 127.0.0.1
         </ol>
       </section>
       <section class="content">
-        <h2>Histogram</h2>
-      </section>
-      <section class="content">
-        <h2>Percolate</h2>
-      </section>
-      <section><img src="images/percolate-yo-dawg.jpg"></section>
-      <section>
-        <h2>Store a Query</h2>
-        <pre><code class="language-javascript">curl -XPUT 'localhost:9200/my-index/.percolator/1' -d '{
-  "query" : {
-    "match" : {
-      "message" : "bonsai tree"
-    }
-  }
-}'</code></pre>
-      </section>
-      <section>
-        <h2>Query for matches</h2>
-        <h3>Running:</h3>
-        <pre><code class="language-javascript">curl -XGET 'localhost:9200/my-index/message/_percolate' -d '{
-  "doc" : {
-    "message" : "A new bonsai tree in the office"
-  }
-}'</code></pre>
-      </section>
-      <section>
-        <h2>Get results</h2>
-        <pre><code class="language-javascript">{
-  "took" : 19,
-  "_shards" : {
-    "total" : 5,
-    "successful" : 5,
-    "failed" : 0
-  },
-  "total" : 1,
-  "matches" : [
-    {
-      "_index" : "my-index",
-      "_id" : "1"
-    }
-  ]
-}
-
-</code></pre>
-      </section>
-      <section class="act">
-        <h1>Act III: ElasticSearch use-cases</h1>
-      </section>
-      <section class="chapter tizzo">
-        <h1>Integrating Drupal with Elasticsearch</h1>
-        <!--p
-        //Search API Elasticsearch
-        //a http://www.sitepoint.com/install-integrate-elasticsearch-drupal/
-        //Howard to write-up/screen capture
-        
-        -->
-      </section>
-      <section class="nstielau content">
-        <h2>WordPress</h2>
-        <p>never a coalesence around Drupal, acquia etc put weigth behind solr.  Done so well, not much other need. Setup solr is painful.  "In WP, core search is about as bad as Drupals.  Select title like blah blah sort by date". 500k nodes is unusable, WP came later, and ES is way better for web-indexing.  Much much easier to install & configure, easier to cluster, communicates with JSON, more options for weighting content, or, even if it does have the same features, it makes them easier to access.  Solr is pretty good. Matt Boynes did searchpress, drop-in search replacement for WP (on github).</p>
-        <p>ES Docs is dense, ask someone Explain it to me like a 5 year old.</p>
-        <One>suggestion: Ornately docs, but not some much examples....</One>
-        <p>Really new apple to a rotten apple.  WP-Query-Object, generally really specific to MySQL.  Kinda like Views, you can go off the rails.  Matt Boynes, WP-Query-Object subclass, to run WP out of ES. LEFT JOIN BLAH, no, let Lucene do it.  I don't want to deal with.</p>
-        <p>Matt Boynes WP Camp LA (see LA).</p>
-      </section>
-      <section class="nstielau content">
-        <h2>Example: Score boosting</h2>
-        <p><strong>Scenario:</strong><span>Weight search results by popularity.</span></p>
-        <p><strong>Solution:</strong><span>Use `function_score` with a periodically updated boost factor.</span>
-          <ul>
-            <li>Every 2h, query Google Analytics</li>
-            <li>Update custom field: "ga_boost" = 1-RANK</li>
-            <li>Use `function_score` multiple natural score by "ga_boost"</li>
-          </ul>
-        </p>
+        <h2>Histogram</h2><img src="images/es_histogram.png" width="350">
       </section>
       <section class="tizzo content">
-        <h2>Example: Score boosting++</h2>
+        <h2>Example: Score boosting</h2>
         <p><strong>Scenario:</strong><span>Weight search results by popularity.</span></p>
         <p><strong>Solution:</strong><span>Use `function_score` with a decay function</span>
           <ul>
@@ -266,69 +260,182 @@ curl 127.0.0.1
 }
 </code></pre>
       </section>
-      <section class="nstielau content">
-        <h2>pow("Score boosting", 2)</h2>
-        <p><strong>Scenario:</strong><span>Weight search results by popularity.</span></p>
-        <p><strong>Solution:</strong>
-          <Use>Elasticsearch and figure it out.</Use>
-        </p>
+      <section class="content">
+        <h2>Percolate</h2>
+        <h3>Store a queries and then use documents to find matching queries</h3>
+        <h3>Turn your search frown upside down</h3>
+      </section>
+      <section class="content">
+        <h2>Percolate</h2><img src="images/percolate-yo-dawg.jpg">
+      </section>
+      <section class="content">
+        <h2>Percolate: Store a Query</h2><strong></strong>
+        <pre><code class="language-javascript">curl -XPUT 'localhost:9200/logstash-commits/.percolator/security' -d '{
+  "query" : {
+    "match" : {
+      "message" : "(message:XSS OR message:security)"
+    }
+  }
+}'</code></pre>
+        <pre><code class="language-javascript">curl -XPUT 'localhost:9200/logstash-commits/.percolator/admin_ui' -d '{
+  "query" : {
+    "match" : {
+      "message" : "(message:admin AND message:UI)"
+    }
+  }
+}'
+</code></pre>
+      </section>
+      <section class="content">
+        <h2>Percolate: Query for matches</h2>
+        <h3>Define query-matching for admin UI and security commits:</h3>
+        <pre><code class="language-javascript">curl -XGET 'localhost:9200/logstash-commits/logs/_percolate' -d '{
+  "doc" : {
+    "message" : "Issue #27230: Fix XHTML slash in XSS filter"
+  }
+}'
+</code></pre>
+      </section>
+      <section class="content">
+        <h2>Percolate: Get results</h2>
+        <pre><code class="language-javascript">{
+  "took" : 19,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "failed" : 0
+  },
+  "total" : 1,
+  "matches" : [
+    {
+      "_index" : "logstash-commits",
+      "_id" : "security"
+    }
+  ]
+}
+</code></pre>
+      </section>
+      <section class="chapter tizzo">
+        <h1>Integrating Drupal with Elasticsearch</h1>
+      </section>
+      <section class="tizzo content">
+        <h2>Drupal Modules</h2>
+      </section>
+      <section class="chapter tizzo">
+        <h2><a href="https://drupal.org/project/search_api_elasticsearch">Search API Elasticsearch</a></h2>
+        <h3>The Good</h3>
+        <h4>Really complete integration with all of Search API's features</h4>
+        <h3>The Bad</h3>
+        <h4>It's really not mature, too many bugs to really use on a project</h4>
+      </section>
+      <section class="chapter tizzo">
+        <h2><a href="https://drupal.org/project/elasticsearch_connector"><span>Elasticsearch Connector</span></a></h2>
+        <h3>The Good</h3>
+        <ul>
+          <li>A nice framework and API for defining and managing ES clusters/indices</li>
+          <li>Views Integration</li>
+          <li>Statistics</li>
+        </ul>
+        <h3>The Bad</h3>
+        <ul>
+          <li>Incomplete (but less buggy) Search API integration</li>
+        </ul>
+      </section>
+      <section class="chapter tizzo">
+        <h1>Log aggregation</h1>
+      </section>
+      <section class="chapter tizzo">
+        <h2>Logs HTTP</h2>
+        <h4>Log directly to Elasticsearch</h4><img width="350px" src="images/logs-http.png">
+      </section>
+      <section class="chapter tizzo">
+        <h2>GELF</h2>
+        <h4>Log to Logstash, let it log to elasticsearch</h4><img width="350px" src="images/gelf.png">
+      </section>
+      <section>
+        <h2>Custom Code</h2><img width="350px" src="images/create-index.png">
+      </section>
+      <section>
+        <h2>Custom Code</h2><img width="350px" src="images/perform-query.png">
       </section>
       <section class="chapter">
         <h1>Devops <3 ES</h1>
       </section>
-      <section class="content nstielau">
-        <h2>ELK Intro, value prop</h2>
+      <section class="content nstielau elk">
+        <h2>ELK Stack</h2>
         <ul>
           <lu>What are rich logs?</lu>
           <li>Logstash</li>
         </ul>
       </section>
+      <section class="content">
+        <h2>ELK</h2>
+        <h3>The killer app for ElasticSearch</h3>
+        <ul>
+          <li><strong>Logstash:</strong><span> Get data form an input, mutate it, send it to an output</span></li>
+          <li><strong>ElasticSearch:</strong><span> Index the JSON documents into a really useable format</span></li>
+          <li><strong>Kibana:</strong><span> Build interactive dashboards for exploring your data</span></li>
+        </ul>
+      </section>
       <section class="content tizzo">
         <h2>Getting my data into ELK</h2>
         <ul>
-          <li>Logstash</li>
-          <li>WatchDog (Amitai: Log http module)</li>
-          <li>System (syslog)</li>
-          <li>error log</li>
-          <li>Access-Logs</li>
-          <li>Parsing in Logstash (enrichifying™)</li>
+          <li>@amitaibu's<a href="https://www.drupal.org/project/logs_http"><span> Logs HTTP Module</span></a></li>
+          <li>System (syslog,<a href="https://github.com/systemd/journal2gelf"> journald</a><span>)</span></li>
+          <li>tcp, http, udp, varnishlog, file</li>
+          <li><a href="http://logstash.net/docs/1.4.2/"><span>And more</span></a></li>
         </ul>
+      </section>
+      <section class="content">
+        <h2>Munging with Logstash</h2>
+        <h3>the richer the better!</h3><span>This message</span>
+        <pre><code class="language-javascript">Issue #27230: Fix XHTML slash in XSS filter
+</code></pre><span>passes through this logstash configuration</span>
+        <pre><code class="language-javascript">grok { match => ["message", "Issue #%{NUMBER:issue_id}: %{GREEDYDATA:message}" ] }
+</code></pre><span>and gets stored in Elasticsearch kinda like this</span>
+        <pre><code class="language-javascript">{
+  "issue_id": "27230",
+  "issue_message": "Fix XHTML slash in XSS filter",
+  "message": "Issue #27230: Fix XHTML slash in XSS filter"
+}
+</code></pre>
       </section>
       <section class="nstielau content">
-        <h2>Use-cases</h2>
+        <h2>What could you do with data?</h2>
         <ul>
-          <li>Security</li>
-          <li>Exceptions</li>
-          <li>JS/Browser stuff</li>
-          <li>Example (NS)</li>
-          <li>Diagnose outage</li>
-          <li>Kibana (Nick)</li>
-          <li>Some Pantheon Screenshots, video of drilling down</li>
-          <li>brute-force password guessing</li>
+          <li>Actionably address errors</li>
+          <li>Diagnose outage causes</li>
+          <li>Investigate a security breach</li>
+          <li>Identify attacks in progress</li>
+          <li>Alert on abnormal activity</li>
         </ul>
       </section>
       <section class="content">
-        <h2>Kibana, ELK Demo Video (HT)</h2>
+        <h2>ELK Demo</h2><img src="images/black_elk.png">
+      </section>
+      <section class="chapter">
+        <h1>ES Errata</h1>
       </section>
       <section class="content">
-        <h2>Up and running with ES</h2>
+        <h2>Securing ES</h2>
         <ul>
-          <li>DIY (HT)</li>
-          <li>MVP Config Managment (Chef, Puppet)</li>
-          <li>Clustered, Consul for Service Discovery</li>
-          <li>To the future!</li>
+          <li>install updates</li>
+          <li>firewall with iptables</li>
+          <li>run Kibana behind HTTPS</li>
+          <li>run Elasticsearch behind HTTPS</li>
+          <li><a href="http://brudtkuhl.com/securing-elasticsearch/">More info from brudtkuhl.com</a></li>
         </ul>
-      </section>
-      <section class="content">
-        <h2>securing ES</h2>
-        <p><a>defaults are super open</a><a>http://brudtkuhl.com/securing-elasticsearch/</a></p>
       </section>
       <section class="content">
         <h2>Hosted ElasticSearch</h2>
+        <h3>Criteria</h3>
         <ul>
-          <li>host near you</li>
-          <li>price based on data, etc</li>
+          <li>Is the hosted ES near your servers?</li>
+          <li>Does the price work out for the amount of data you have?</li>
+          <li>Does the provider allow customer configuration/tuning?</li>
+          <li>Does the provider understand distributed systems, etc</li>
         </ul>
+        <h3>Providers</h3>
         <ul>
           <li>https://qbox.io/</li>
           <li>https://www.compose.io/elasticsearch/</li>
@@ -336,82 +443,8 @@ curl 127.0.0.1
           <li>https://bonsai.io/</li>
         </ul>
       </section>
-      <section class="content nstielau">
-        <h2>How to sneak in ES</h2>
-        <ul>
-          <li>Use for ops</li>
-          <li>show is awesome</li>
-        </ul>
-      </section>
-      <section class="content">
-        <h3>"make sure you mention that elasticsearch is a very good primary data store for critical mutable data." - @joemiller</h3>
-        <ul>
-          <li><a href="https://aphyr.com/posts/323-call-me-maybe-elasticsearch-1-5-0">Aphyr's "Call me maybe" for Elasticsearch 1.5.0</a></li>
-          <li><a href="http://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html">Elasticsearch Resiliency Status</a></li>
-        </ul>
-      </section>
-      <section class="content">
-        <p>ELK</p>
-      </section>
-      <section class="content">
-        <p>CHELK.</p>
-      </section>
-      <section class="content">
-        <p>EE EEE (LK).</p>
-      </section>
-      <section class="content">
-        <h2>References</h2>
-        <ul>
-          <li>ES Docs</li>
-          <li>Blog posts, etc</li>
-          <li>Our Docker stuff</li>
-        </ul>
-      </section>
-      <section class="content">
-        <h2>Image Credits</h2>
-      </section>
-      <section>
-        <h2>Bullet List</h2>
-        <h3 class="bullet">Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a></h3>
-        <ul class="sequential">
-          <li>Bullet 1</li>
-          <li>Bullet 2</li>
-          <li>Bullet 3</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Syntax Highlighting</h2>
-        <h3>Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a></h3>
-        <pre><code class="language-javascript">bespoke.from('article', [
-  classes(),
-  keys(),
-  touch(),
-  bullets('li, .bullet')
-]);
-</code></pre>
-      </section>
-      <section data-bespoke-hash="named-route">
-        <h2>Named Route</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a></h3>
-        <p>Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.</p>
-      </section>
-      <section data-bespoke-backdrop="emphatic" class="emphatic-text">
-        <h2>Emphatic Slide!</h2>
-        <h3>Powered by <a href="https://github.com/markdalgleish/bespoke-backdrop">bespoke-backdrop</a></h3>
-      </section>
-      <section>
-        <h2 class="bullet">Just the beginning...</h2><br>
-        <ul>
-          <li>Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em></li>
-          <li>Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em></li>
-          <li>Edit JavaScript in <em>'src/scripts/main.js'</em></li>
-        </ul><br>
-        <ul>
-          <li><strong>Enjoy! :)</strong><a href="http://twitter.com/markdalgleish"> -@markdalgleish</a></li>
-        </ul>
-      </section>
     </article>
-    <script src="build/build.js"></script>
-    <script src="bower_components/prism/prism.js"></script>
   </body>
+  <script src="build/build.js"></script>
+  <script src="bower_components/prism/prism.js"></script>
 </html>
