@@ -14,7 +14,7 @@ bespoke.from('article', [
   cube(),
   keys(),
   touch(),
-  bullets('ul.sequential li, .bullet'),
+  bullets('ul li, ul.sequential li, .bullet'),
   backdrop(),
   scale(),
   hash()

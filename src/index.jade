@@ -303,6 +303,9 @@ html
       section.chapter.tizzo
         h1 Integrating Drupal with Elasticsearch
 
+      section.tizzo.content
+        h2 Drupal Modules
+
       section.chapter.tizzo
         h2
           a(href="https://drupal.org/project/search_api_elasticsearch") Search API Elasticsearch
@@ -311,7 +314,8 @@ html
 
       section.chapter.tizzo
         h2
-          a(href="https://drupal.org/project/elasticsearch_connector") Elasticsearch Connector
+          a(href="https://drupal.org/project/elasticsearch_connector")
+            span Elasticsearch Connector
         ul
           li Very very cool
           li search_api integration is a little incomplete
@@ -352,8 +356,6 @@ html
                 }
             }
 
-      section.tizzo.content
-        h2 Drupal Modules
 
       section.chapter
         h1 Devops <3 ES
@@ -366,18 +368,18 @@ html
 
       section.content
         h2 ELK
-        p The killer app for ElasticSearch
-        p
-          strong Logstash:
-          span  stuff
+        h3 The killer app for ElasticSearch
+        ul
+          li
+            strong Logstash:
+            span  Get data form an input, mutate it, send it to an output
+          li
+            strong ElasticSearch:
+            span  Index the JSON documents into a really useable format
 
-        p
-          strong ElasticSearch:
-          span  stuff
-
-        p
-          strong Kibana:
-          span  stuff
+          li
+            strong Kibana:
+            span  Build interactive dashboards for exploring your data
 
       section.content.tizzo
         h2 Getting my data into ELK
