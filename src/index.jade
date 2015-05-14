@@ -14,7 +14,6 @@ html
       section
         h1 How I learned to love Elasticsearch
         // Joke about 'we'?
-        h4 A love story, by @tizzo y @nstielau
 
       section.content(data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true")
         div(style="float:right;")
@@ -35,7 +34,6 @@ html
       section.content.cluster
         h2 Distributed
         p "Elasticsearch allows you to start small and scale horizontally as you grow. Simply add more nodes, and let the cluster automatically take advantage of the extra hardware."
-        p "Zen Disco, Master Election, Replicas"
 
       section.content.asf
         h2 Open source
@@ -43,30 +41,25 @@ html
 
       section.content
         h2 Document-oriented
+        ul
+          li No pre-defined schema
+          li Allows nested documents
         pre(style="overflow:hidden;")
           code.language-javascript.
             [
               {
-                "name": "Fin",
-                "nickname": "Finito Burrito",
-                "breed": "megamutt",
-                "species": "canine"
-              },
-              {
-                "name": "Stieggie",
-                "breed": "German Wire-haired Pointer",
-                "family_tree": {
-                  "father": "Deus"
-                }
-                "species": "canine"
+                "commit": "b03932be472a7198980cd73e5c532dc34e0c9aea",
+                "committer_name": "bob",
+                "author_name": "bob",
+                "date": "Tue May 12 15:40:44 2015 -0700",
+                "message": "Issue-2457427-by-Crell-Bad-error-handling-of-invalid-Entity-definition",
+                "@timestamp": "2015-05-12T15:40:44-07:00"
               }
             ]
-        // no pre-defined schema
-        // Allows nested documents
 
-      section.content
+      section.content.alf
         h2 Near Realtime*
-        p The difference between realtime and near-realtime is that near-realtime is not realtime.
+        p(style="font-size:1.2em; color: white;width:300px;padding-top:250px;") *The difference between realtime and near-realtime is that near-realtime is not realtime.
 
       section.content.lucene
         h2 Built on Apache Lucene™
@@ -301,13 +294,13 @@ html
 
       section.chapter.tizzo
         h2
-          a(href="https://drupal.org/project/search_api_elasticsearch")Search API Elasticsearch
+          a(href="https://drupal.org/project/search_api_elasticsearch") Search API Elasticsearch
         ul
           li RUN AWAY, IT'S TOO LATE FOR ME! SAVE YOURSELVES!!!
 
       section.chapter.tizzo
         h2
-          a(href="https://drupal.org/project/elasticsearch_connector")Elasticsearch Connector
+          a(href="https://drupal.org/project/elasticsearch_connector") Elasticsearch Connector
         ul
           li Very very cool
           li search_api integration is a little incomplete
