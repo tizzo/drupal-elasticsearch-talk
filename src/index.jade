@@ -26,6 +26,20 @@ html
           h3 aka @tizzo:
           img(src="images/tizzo.jpg" width="100")
 
+      section.content
+        h2 We're going to make you love Elasticsearch
+
+      section.content
+        h2 Outline
+        ul
+          li Elasticsearch Overview
+          li Search Engine Comparisons
+          li CLI Examples
+          li Fancypants Use-cases
+          li Drupal and Elasticsearch
+          li Devops and Elasticsearch
+          li Playing with Drupal log commits
+
       section.tizzo.chapter
         h1 Elasticsearch is..
         h3
@@ -63,15 +77,7 @@ html
 
       section.content.lucene
         h2 Built on Apache Lucene™
-        p Just like:
-        ul
-          li Solr
-          li (some?) LinkedIn search functionality
-        p (like all good open source search)
-
-      section.content
-        h2 ...Java (and the JVM)
-        p
+        h3 Lucene is the search smarts
 
       section.content
         h2 Clusterable
@@ -89,16 +95,6 @@ html
 
           li
             a(href="http://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html") Elasticsearch Resiliency Status
-
-      section.content
-        h2 Clusterable: replicas
-
-      section.content
-        h2 Clusterable: ZenDisco!
-
-      section.content
-        h2 Clusterable: Leader Election
-        p have 1 node or 5 nodes
 
       section.chapter
         h1 Dude, I've been searching for nodes since like, 2005
@@ -260,6 +256,7 @@ html
         p
           strong Solution:
           span Use `function_score` with a decay function
+          span TODO: Extend query
           ul
             li Every 2h, query Google Analytics
             li Update custom field: "ga_rank" = RANK
@@ -335,6 +332,7 @@ html
 
       section.tizzo.content
         h2 Drupal Modules
+        p TODO: Adding rating or 'best/worst thing?'
 
       section.chapter.tizzo
         h2
