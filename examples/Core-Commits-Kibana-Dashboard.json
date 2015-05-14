@@ -20,10 +20,10 @@
     "filter": {
       "list": {
         "0": {
-          "from": "2011-01-02T01:47:59.804Z",
-          "to": "2014-10-02T00:47:59.804Z",
           "type": "time",
           "field": "@timestamp",
+          "from": "now-15y",
+          "to": "now",
           "mandate": "must",
           "active": true,
           "alias": "",
@@ -46,8 +46,74 @@
   },
   "rows": [
     {
-      "title": "Commit Statistics",
+      "title": "Total",
       "height": "150px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 4,
+          "editable": true,
+          "type": "hits",
+          "loadingEditor": false,
+          "style": {
+            "font-size": "72pt"
+          },
+          "arrangement": "horizontal",
+          "chart": "total",
+          "counter_pos": "above",
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "spyable": true,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0
+            ]
+          },
+          "title": "Commits"
+        },
+        {
+          "error": false,
+          "span": 4,
+          "editable": true,
+          "type": "terms",
+          "loadingEditor": false,
+          "field": "issue",
+          "exclude": [],
+          "missing": false,
+          "other": false,
+          "size": 5,
+          "order": "count",
+          "style": {
+            "font-size": "10pt"
+          },
+          "donut": false,
+          "tilt": false,
+          "labels": true,
+          "arrangement": "horizontal",
+          "chart": "table",
+          "counter_pos": "above",
+          "spyable": true,
+          "queries": {
+            "mode": "all",
+            "ids": [
+              0
+            ]
+          },
+          "tmode": "terms",
+          "tstat": "total",
+          "valuefield": "",
+          "title": "Issue"
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "Commit Statistics",
+      "height": "400px",
       "editable": true,
       "collapse": false,
       "collapsable": true,
@@ -86,7 +152,7 @@
           },
           "auto_int": true,
           "resolution": 100,
-          "interval": "7d",
+          "interval": "1y",
           "intervals": [
             "auto",
             "1s",
@@ -131,7 +197,7 @@
           "editable": true,
           "type": "terms",
           "loadingEditor": false,
-          "field": "author.raw",
+          "field": "author_name.raw",
           "exclude": [],
           "missing": false,
           "other": false,
@@ -145,7 +211,7 @@
           "labels": true,
           "arrangement": "horizontal",
           "chart": "pie",
-          "counter_pos": "above",
+          "counter_pos": "none",
           "spyable": true,
           "queries": {
             "mode": "all",
@@ -156,7 +222,7 @@
           "tmode": "terms",
           "tstat": "total",
           "valuefield": "",
-          "title": "Committer"
+          "title": "Author"
         }
       ],
       "notice": false
@@ -183,9 +249,10 @@
           ],
           "overflow": "min-height",
           "fields": [
-            "date",
-            "author",
-            "message"
+            "author_name",
+            "commit",
+            "message",
+            "@timestamp"
           ],
           "highlight": [],
           "sortable": true,
@@ -231,7 +298,12 @@
       "enable": true,
       "query": "*",
       "pinned": true,
-      "history": [],
+      "history": [
+        "",
+        "webchick",
+        "issue:[2395691 TO 2397691]",
+        "issue:[0 TO 9999]"
+      ],
       "remember": 10
     },
     {
@@ -273,7 +345,7 @@
         "1d"
       ],
       "timefield": "@timestamp",
-      "now": false,
+      "now": true,
       "filter_id": 0
     }
   ],
