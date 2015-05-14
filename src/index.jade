@@ -300,7 +300,8 @@ html
 
       section.content
         h2 Percolate
-
+        h3 Store a queries and then use documents to find matching queries
+        h3 Turn your search frown upside down
 
       section.content
         h2 Percolate
@@ -362,6 +363,9 @@ html
       section.chapter.tizzo
         h1 Integrating Drupal with Elasticsearch
 
+      section.tizzo.content
+        h2 Drupal Modules
+
       section.chapter.tizzo
         h2
           a(href="https://drupal.org/project/search_api_elasticsearch") Search API Elasticsearch
@@ -395,6 +399,14 @@ html
         h2 GELF
         h4 Log to Logstash, let it log to elasticsearch
         img(width="350px" src="images/gelf.png")
+
+      section
+        h2 Custom Code
+        img(width="350px" src="images/create-index.png")
+
+      section
+        h2 Custom Code
+        img(width="350px" src="images/perform-query.png")
 
       section.chapter
         h1 Devops <3 ES
@@ -497,3 +509,6 @@ html
           li https://www.compose.io/elasticsearch/
           li https://www.found.no/
           li https://bonsai.io/
+
+  script(src='build/build.js')
+  script(src="bower_components/prism/prism.js")
