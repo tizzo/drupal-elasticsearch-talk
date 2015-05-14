@@ -12,18 +12,19 @@ html
     article
 
       section
-        h1 How I learned to love Elasticsearch
-        // Joke about 'we'?
+        h1(style="font-size:3em") How I learned to love Elasticsearch
+        img(src="images/ride-the-bomb.gif")
+        h4 A love story, by @tizzo y @nstielau
 
       section.content(data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true")
-        div(style="float:right;")
           h2 Nick Stielau
           h3 @nstielau:
-          h4 Panthoer, Operator
+          h4 Pantheor, Smooth Operator
           img(src="images/nstielau.jpg" width="100")
-        div
+      section.content(data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true")
           h2 Howard Tyson
-          h3 aka @tizzo:
+          h3 @tizzo
+          h4 Zivtechnician
           img(src="images/tizzo.jpg" width="100")
 
       section.content
@@ -146,7 +147,7 @@ html
           code.language-javascript.
             curl -XPUT 'http://localhost:9200/logstash-commits/' -d '
               index:
-                number_of_shards : 3
+                number_of_shards : 1
                 number_of_replicas : 2
             '
             curl 127.0.0.1
@@ -154,6 +155,35 @@ html
       section.content
         // http://joelabrahamsson.com/elasticsearch-101/
         h2 Inserting docs
+        strong Request:
+        pre
+          code.language-javascript.
+            curl -XPOST "http://localhost:9200/logstash-commits/logs" -d' {
+              "commit": "bfdcc65a85a2ae3af5025f8d0a05779fbb59c621",
+              "committer_name": "xjm",
+              "author_name": "xjm",
+              "date": "Tue May 12 15:14:13 2015 -0700",
+              "message": "Issue-2459777 fixing stuff",
+              "@timestamp": "2015-05-12T15:14:13-07:00"
+            }'
+
+
+        strong Response:
+        pre
+          code.language-javascript.
+            {
+                "ok": true,
+                "_index": "logstash-commits",
+                "_type": "logs",
+                "_id": 1,
+                "_version": 1
+            }
+
+
+
+      section.content
+        // http://joelabrahamsson.com/elasticsearch-101/
+        h2 Updating docs
         strong Request:
         pre
           code.language-javascript.
@@ -226,11 +256,12 @@ html
                 }
             }'
 
+// issue by person images?
       section.nstielau
         img(src="images/orcas.png" width="600")
 
       section.tizzo.chapter
-        h1 Advanced Features
+        h1 BRING IT!
 
       section.nstielau.content.merlin
         h2 Clarks' Laws vis-á-vis ES
@@ -432,7 +463,7 @@ html
       section.nstielau.content
         h2 What could you do with data?
         ul
-          li Actionally address errors
+          li Actionably address errors
           li Diagnose outage causes
           li Investigate a security breach
           li Identify attacks in progress
@@ -444,14 +475,6 @@ html
 
       section.chapter
         h1 ES Errata
-
-      section.content
-        h2 Up and running with ES
-        ul
-          li DIY (HT)
-          li MVP Config Managment (Chef, Puppet)
-          li Clustered, Consul for Service Discovery
-          li To the future!
 
       section.content
         h2 Securing ES
@@ -484,7 +507,6 @@ html
         ul
           li Use for ops
           li show is awesome
-
 
       section.content
         h2 References
