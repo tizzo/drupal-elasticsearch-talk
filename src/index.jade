@@ -40,6 +40,7 @@ html
       section.content.cluster
         h2 ElasticSearch is Distributed
         p "Elasticsearch allows you to start small and scale horizontally as you grow. Simply add more nodes, and let the cluster automatically take advantage of the extra hardware."
+        p "Zen Disco, Master Election, Replicas"
 
       section.content.asf
         h2 ElasticSearch is Open source
@@ -121,16 +122,13 @@ html
         pre
           code.language-javascript= '<?php captial_E_duh( "Elasticsearch" );'
 
-      section
-        h1 Stop!
-        h2 DemoTime
-
-      section.act
-        h1 Act II:  The Nitty and The Gritty
+      session.chapter
+        h1 Curl Party
 
       section.content
         // http://joelabrahamsson.com/elasticsearch-101/
         h2 Inserting docs
+        strong Request:
         pre
           code.language-javascript.
             curl -XPUT "http://localhost:9200/animals/dogs/1" -d'
@@ -140,36 +138,62 @@ html
                 "is_good": false
             }'
 
-      section.content
-        h2 Other stuff
-        Create an index (curl)
+        strong Response:
         pre
           code.language-javascript.
-            curl 127.0.0.1
+            {
+                "ok": true,
+                "_index": "animals",
+                "_type": "dog",
+                "_id": 1,
+                "_version": 2
+            }'
 
       section.content
-        h2 store 2 docs
+        // http://joelabrahamsson.com/elasticsearch-101/
+        h2 Retreiving a doc
+        strong Request:
         pre
           code.language-javascript.
-            curl 127.0.0.1
+            curl -XGET "http://localhost:9200/animals/dogs/1"
+
+        strong Response:
+        pre
+          code.language-javascript.
+            {
+                "_index": "animals",
+                "_type": "dog",
+                "_id": 1,
+                "_version": 2,
+                "exists": true,
+                "_source": {
+                  "breed": "'doodle'",
+                  "name": "Molly",
+                  "is_good": false
+                }
+            }
 
       section.content
-        h2 query for 1
+        h2 Searching
         pre
           code.language-javascript.
-            curl 127.0.0.1
-
-
-      section
-        Web UI? or just Loading JSON in browser
-        aka “If I can’t see it in a browser it didn’t happen, this is DrupalCon”
+            curl -XPOST "http://localhost:9200/_search" -d'
+            {
+                "query": {
+                    "query_string": {
+                        "query": "labrador"
+                    }
+                },
+                "filter": {
+                  "term": {"is_good": true}
+                }
+            }'
 
       section.nstielau
         img(src="/images/orcas.png" width="600")
 
       section.tizzo.chapter
         h1 Advanced Features
-        // Could go over the score boosting example from Alley below
 
       section.nstielau.content.merlin
         h2 Clarks' Laws vis-á-vis ES
@@ -185,6 +209,7 @@ html
 
       section.content
         h2 Histogram
+        img(src="images/es_histogram.png" width="350")
 
       section.content
         h2 Percolate
@@ -192,25 +217,27 @@ html
       section
         img(src="images/percolate-yo-dawg.jpg")
 
-      section
+      section.content
         h2 Store a Query
+        strong
         pre
           code.language-javascript.
-            curl -XPUT 'localhost:9200/my-index/.percolator/1' -d '{
+            curl -XPUT 'localhost:9200/my-index/.percolator/security' -d '{
               "query" : {
                 "match" : {
-                  "message" : "bonsai tree"
+                  "message" : "(message:XSS OR message:security)"
                 }
               }
             }'
+
       section
         h2 Query for matches
         h3 Running:
         pre
           code.language-javascript.
-            curl -XGET 'localhost:9200/my-index/message/_percolate' -d '{
+            curl -XGET 'localhost:9200/core-commits/message/_percolate' -d '{
               "doc" : {
-                "message" : "A new bonsai tree in the office"
+                "message" : "Issue #27230: Fix XHTML slash in XSS filter"
               }
             }'
       section
@@ -227,15 +254,11 @@ html
               "total" : 1,
               "matches" : [
                 {
-                  "_index" : "my-index",
-                  "_id" : "1"
+                  "_index" : "core-commits",
+                  "_id" : "security"
                 }
               ]
             }
-
-
-      section.act
-        h1 Act III: ElasticSearch use-cases
 
       section.chapter.tizzo
         h1 Integrating Drupal with Elasticsearch
@@ -244,32 +267,8 @@ html
           //a http://www.sitepoint.com/install-integrate-elasticsearch-drupal/
           //Howard to write-up/screen capture
 
-      section.nstielau.content
-        h2 WordPress
-        p never a coalesence around Drupal, acquia etc put weigth behind solr.  Done so well, not much other need. Setup solr is painful.  "In WP, core search is about as bad as Drupals.  Select title like blah blah sort by date". 500k nodes is unusable, WP came later, and ES is way better for web-indexing.  Much much easier to install & configure, easier to cluster, communicates with JSON, more options for weighting content, or, even if it does have the same features, it makes them easier to access.  Solr is pretty good. Matt Boynes did searchpress, drop-in search replacement for WP (on github).
-
-        p ES Docs is dense, ask someone Explain it to me like a 5 year old.
-        One suggestion: Ornately docs, but not some much examples....
-
-        p Really new apple to a rotten apple.  WP-Query-Object, generally really specific to MySQL.  Kinda like Views, you can go off the rails.  Matt Boynes, WP-Query-Object subclass, to run WP out of ES. LEFT JOIN BLAH, no, let Lucene do it.  I don't want to deal with.
-
-        p Matt Boynes WP Camp LA (see LA).
-
-      section.nstielau.content
-        h2 Example: Score boosting
-        p
-          strong Scenario:
-          span Weight search results by popularity.
-        p
-          strong Solution:
-          span Use `function_score` with a periodically updated boost factor.
-          ul
-            li Every 2h, query Google Analytics
-            li Update custom field: "ga_boost" = 1-RANK
-            li Use `function_score` multiple natural score by "ga_boost"
-
       section.tizzo.content
-        h2 Example: Score boosting++
+        h2 Example: Score boosting
         p
           strong Scenario:
           span Weight search results by popularity.
@@ -289,23 +288,32 @@ html
                 }
             }
 
-      section.nstielau.content
-        h2 pow("Score boosting", 2)
-        p
-          strong Scenario:
-          span Weight search results by popularity.
-        p
-          strong Solution:
-          Use Elasticsearch and figure it out.
+      section.tizzo.content
+        h2 Drupal Modules
 
       section.chapter
         h1 Devops <3 ES
 
-      section.content.nstielau
-        h2 ELK Intro, value prop
+      section.content.nstielau.elk
+        h2 ELK Stack
         ul
           lu What are rich logs?
           li Logstash
+
+      section.content
+        h2 ELK
+        p The killer app for ElasticSearch
+        p
+          strong Logstash:
+          span  stuff
+
+        p
+          strong ElasticSearch:
+          span  stuff
+
+        p
+          strong Kibana:
+          span  stuff
 
       section.content.tizzo
         h2 Getting my data into ELK
@@ -316,6 +324,31 @@ html
           li error log
           li Access-Logs
           li Parsing in Logstash (enrichifying™)
+
+      section.content
+        h2 Munging with Logstash
+        span This message
+        pre
+          code.language-javascript.
+            Ban 87.103.171.33
+
+        span passes through this logstash configuration
+        pre
+          code.language-javascript.
+            grok { match => ["message", "(?<fail2ban_action>Ban|Unban) %{IP:fail2ban_ip}" ] }
+
+        span and gets stored in Elasticsearch kinda like this
+        pre
+          code.language-javascript.
+            {
+              "message": "Ban 87.103.171.33",
+              "fail2ban_ip": "87.103.171.33",
+              "fail2ban_action": "Ban"
+            }
+
+      section.content
+        h2 Bans by IP Address
+        img(src="/images/banned_ips.png" width="300")
 
       section.nstielau.content
         h2 Use-cases
@@ -331,6 +364,31 @@ html
 
       section.content
         h2 Kibana, ELK Demo Video (HT)
+
+      section.content
+        h3 "make sure you mention that elasticsearch is a very good primary data store for critical mutable data." - @joemiller
+
+        h3 "To be precise, Elasticsearch’s transaction log does not put your data safety first. It puts it anywhere from zero to five seconds later." -Aphyr
+
+        ul
+          li
+            a(href="https://aphyr.com/posts/323-call-me-maybe-elasticsearch-1-5-0") Aphyr's "Call me maybe" for Elasticsearch 1.5.0
+
+          li
+            a(href="http://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html") Elasticsearch Resiliency Status
+
+      section.content
+        p ELK
+
+      section.content
+         p CHELK.
+
+      section.content
+        p EE EEE (LK).
+
+
+      section.chapter
+        h1 ES Errata
 
       section.content
         h2 Up and running with ES
@@ -363,25 +421,6 @@ html
           li Use for ops
           li show is awesome
 
-      section.content
-        h3 "make sure you mention that elasticsearch is a very good primary data store for critical mutable data." - @joemiller
-
-        ul
-
-          li
-            a(href="https://aphyr.com/posts/323-call-me-maybe-elasticsearch-1-5-0") Aphyr's "Call me maybe" for Elasticsearch 1.5.0
-
-          li
-            a(href="http://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html") Elasticsearch Resiliency Status
-
-      section.content
-        p ELK
-
-      section.content
-         p CHELK.
-
-      section.content
-        p EE EEE (LK).
 
       section.content
         h2 References
