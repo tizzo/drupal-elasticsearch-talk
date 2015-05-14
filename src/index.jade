@@ -17,16 +17,15 @@ html
         h4 A love story, by @tizzo y @nstielau
 
       section.content(data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true")
-        // TODO: Side by side
         div(style="float:right;")
           h2 Nick Stielau
           h3 @nstielau:
           h4 Panthoer, Operator
-          img(src="/images/nstielau.jpg" width="100")
+          img(src="images/nstielau.jpg" width="100")
         div
           h2 Howard Tyson
           h3 aka @tizzo:
-          img(src="/images/tizzo.jpg" width="100")
+          img(src="images/tizzo.jpg" width="100")
 
       section.act
         h1 Who is this ElasticSearch guy, anyway?
@@ -126,6 +125,17 @@ html
         h1 Curl Party
 
       section.content
+        h2 Create an index (curl)
+        pre
+          code.language-javascript.
+            curl -XPUT 'http://localhost:9200/twitter/' -d '
+              index :
+              number_of_shards : 3
+              number_of_replicas : 2
+            '
+            curl 127.0.0.1
+
+      section.content
         // http://joelabrahamsson.com/elasticsearch-101/
         h2 Inserting docs
         strong Request:
@@ -190,7 +200,7 @@ html
             }'
 
       section.nstielau
-        img(src="/images/orcas.png" width="600")
+        img(src="images/orcas.png" width="600")
 
       section.tizzo.chapter
         h1 Advanced Features
@@ -475,3 +485,4 @@ html
             a(href='http://twitter.com/markdalgleish')  -@markdalgleish
 
     script(src='build/build.js')
+    script(src="bower_components/prism/prism.js")
