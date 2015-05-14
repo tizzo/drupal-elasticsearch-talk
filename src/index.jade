@@ -24,7 +24,7 @@ html
           img(src="images/nstielau.jpg" width="100")
         div
           h2 Howard Tyson
-          h3 aka @tizzo:
+          h3 @tizzo:
           img(src="images/tizzo.jpg" width="100")
 
       section.tizzo.chapter
@@ -93,15 +93,20 @@ html
 
       section.content
         h2 Clusterable: ZenDisco!
+
+      section.content
+        h2 Clusterable: Leader Election
+        ul
+          li Who directs traffic?
+          li You probably want 1 node or 5 nodes
+
+      section.content
+        h2 In action!
         img(src="images/screen-cast-gifs/clustering.gif")
 
       section.content
         h2 Clusterable: replicas
         img(src="images/screen-cast-gifs/rebalancing.gif")
-
-      section.content
-        h2 Clusterable: Leader Election
-        p have 1 node or 5 nodes
 
       section.chapter
         h1 Dude, I've been searching for nodes since like, 2005
@@ -153,7 +158,7 @@ html
           code.language-javascript.
             curl -XPUT 'http://localhost:9200/logstash-commits/' -d '
               index:
-                number_of_shards : 3
+                number_of_shards : 1
                 number_of_replicas : 2
             '
             curl 127.0.0.1
@@ -161,6 +166,35 @@ html
       section.content
         // http://joelabrahamsson.com/elasticsearch-101/
         h2 Inserting docs
+        strong Request:
+        pre
+          code.language-javascript.
+            curl -XPOST "http://localhost:9200/logstash-commits/logs" -d' {
+              "commit": "bfdcc65a85a2ae3af5025f8d0a05779fbb59c621",
+              "committer_name": "xjm",
+              "author_name": "xjm",
+              "date": "Tue May 12 15:14:13 2015 -0700",
+              "message": "Issue-2459777 fixing stuff",
+              "@timestamp": "2015-05-12T15:14:13-07:00"
+            }'
+
+
+        strong Response:
+        pre
+          code.language-javascript.
+            {
+                "ok": true,
+                "_index": "logstash-commits",
+                "_type": "logs",
+                "_id": 1,
+                "_version": 1
+            }
+
+
+
+      section.content
+        // http://joelabrahamsson.com/elasticsearch-101/
+        h2 Updating docs
         strong Request:
         pre
           code.language-javascript.
@@ -237,7 +271,7 @@ html
         img(src="images/orcas.png" width="600")
 
       section.tizzo.chapter
-        h1 Advanced Features
+        h1 BRING IT!
 
       section.nstielau.content.merlin
         h2 Clarks' Laws vis-á-vis ES
