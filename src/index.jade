@@ -27,22 +27,18 @@ html
           h3 aka @tizzo:
           img(src="images/tizzo.jpg" width="100")
 
-      section.act
-        h1 Who is this ElasticSearch guy, anyway?
-        // What do we want to for 'Act X' images? curtains
-
-      section.tizzo.content
-        h2 Elasticsearch is..
-        p
+      section.tizzo.chapter
+        h1 Elasticsearch is..
+        h3
           = 'a distributed, open source search and analytics engine, designed for horizontal scalability, reliability, and easy management.'
 
       section.content.cluster
-        h2 ElasticSearch is Distributed
+        h2 Distributed
         p "Elasticsearch allows you to start small and scale horizontally as you grow. Simply add more nodes, and let the cluster automatically take advantage of the extra hardware."
         p "Zen Disco, Master Election, Replicas"
 
       section.content.asf
-        h2 ElasticSearch is Open source
+        h2 Open source
         p The Apache License (/əˈpætʃi/) is a free software license written by the Apache Software Foundation (ASF). The Apache License requires preservation of the copyright notice and disclaimer.
 
       section.content
@@ -69,7 +65,8 @@ html
         // Allows nested documents
 
       section.content
-        h2 Near Realtime
+        h2 Near Realtime*
+        p The difference between realtime and near-realtime is that near-realtime is not realtime.
 
       section.content.lucene
         h2 Built on Apache Lucene™
@@ -86,6 +83,32 @@ html
       section.content
         h2 Clusterable
         img(src="/images/es_head.png" width="600")
+
+      section.content
+        h2 Clusterable: Data security
+        h3 "make sure you mention that elasticsearch is a very good primary data store for critical mutable data." - @joemiller
+
+        h3 "To be precise, Elasticsearch’s transaction log does not put your data safety first. It puts it anywhere from zero to five seconds later." -Aphyr
+
+        ul
+          li
+            a(href="https://aphyr.com/posts/323-call-me-maybe-elasticsearch-1-5-0") Aphyr's "Call me maybe" for Elasticsearch 1.5.0
+
+          li
+            a(href="http://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html") Elasticsearch Resiliency Status
+
+      section.content
+        h2 Clusterable: replicas
+
+      section.content
+        h2 Clusterable: ZenDisco!
+
+      section.content
+        h2 Clusterable: Leader Election
+        p have 1 node or 5 nodes
+
+      section.chapter
+        h1 Dude, I've been searching for nodes since like, 2005
 
       section.content
         h2 ES vs. MySQL Full-text Search
@@ -108,7 +131,7 @@ html
           li Competition makes stuff better!
           li http://solr-vs-elasticsearch.com/
 
-      section.content
+      section.content.sphinx
         h2.sphinx ES vs.
 
       section.nstielau.quote.apple
@@ -116,13 +139,17 @@ html
 
       section.nstielau.content
         h2 Bonus! sane capitalization
-        pre
-          code.language-javascript= '<?php capital_P_dangit( "WordPress" ); ?>'
-        pre
+        h3 sane...
+        pre(style="font-size:1.2em;")
           code.language-javascript= '<?php captial_E_duh( "Elasticsearch" );'
+        h3 uh...
+        pre(style="font-size:1.2em;")
+          code.language-javascript= '<?php capital_P_dangit( "WordPress" ); ?>'
 
       session.chapter
-        h1 Curl Party
+        h1 Ain't no Party like a cURL Party
+          span(style="color:#ae81ff;")  because a cURL is
+          span(style="color:#a6e22e;")  nerdy
 
       section.content
         h2 Create an index (curl)
@@ -223,12 +250,10 @@ html
 
       section.content
         h2 Percolate
-
-      section
         img(src="images/percolate-yo-dawg.jpg")
 
       section.content
-        h2 Store a Query
+        h2 Percolate: Store a Query
         strong
         pre
           code.language-javascript.
@@ -240,8 +265,8 @@ html
               }
             }'
 
-      section
-        h2 Query for matches
+      section.content
+        h2 Percolate: Query for matches
         h3 Running:
         pre
           code.language-javascript.
@@ -250,8 +275,9 @@ html
                 "message" : "Issue #27230: Fix XHTML slash in XSS filter"
               }
             }'
-      section
-        h2 Get results
+
+      section.content
+        h2 Percolate: Get results
         pre
           code.language-javascript.
             {
@@ -328,74 +354,57 @@ html
       section.content.tizzo
         h2 Getting my data into ELK
         ul
-          li Logstash
-          li WatchDog (Amitai: Log http module)
-          li System (syslog)
-          li error log
-          li Access-Logs
-          li Parsing in Logstash (enrichifying™)
+          li @amitaibu's
+            a(href="https://www.drupal.org/project/logs_http")
+              span  Logs HTTP Module
+          li System (syslog,
+            a(href="https://github.com/systemd/journal2gelf")  journald
+            span )
+          li tcp, http, udp, varnishlog, file
+          li
+            a(href="http://logstash.net/docs/1.4.2/")
+              span And more
 
       section.content
         h2 Munging with Logstash
+        h3 the richer the better!
         span This message
         pre
           code.language-javascript.
-            Ban 87.103.171.33
+            Issue #27230: Fix XHTML slash in XSS filter
 
         span passes through this logstash configuration
         pre
           code.language-javascript.
-            grok { match => ["message", "(?<fail2ban_action>Ban|Unban) %{IP:fail2ban_ip}" ] }
+            grok { match => ["message", "Issue #%{NUMBER:issue_id}: %{GREEDYDATA:message}" ] }
 
         span and gets stored in Elasticsearch kinda like this
         pre
           code.language-javascript.
             {
-              "message": "Ban 87.103.171.33",
-              "fail2ban_ip": "87.103.171.33",
-              "fail2ban_action": "Ban"
+              "issue_id": "27230",
+              "issue_message": "Fix XHTML slash in XSS filter",
+              "message": "Issue #27230: Fix XHTML slash in XSS filter"
             }
 
       section.content
         h2 Bans by IP Address
+        h2 ?? Issues by person?
+        span so that we can easily see where attacks are coming from
         img(src="/images/banned_ips.png" width="300")
 
       section.nstielau.content
-        h2 Use-cases
+        h2 What could you do with data?
         ul
-          li Security
-          li Exceptions
-          li JS/Browser stuff
-          li Example (NS)
-          li Diagnose outage
-          li Kibana (Nick)
-          li Some Pantheon Screenshots, video of drilling down
-          li brute-force password guessing
+          li Actionally address errors
+          li Diagnose outage causes
+          li Investigate a security breach
+          li Identify attacks in progress
+          li Alert on abnormal activity
 
       section.content
-        h2 Kibana, ELK Demo Video (HT)
-
-      section.content
-        h3 "make sure you mention that elasticsearch is a very good primary data store for critical mutable data." - @joemiller
-
-        h3 "To be precise, Elasticsearch’s transaction log does not put your data safety first. It puts it anywhere from zero to five seconds later." -Aphyr
-
-        ul
-          li
-            a(href="https://aphyr.com/posts/323-call-me-maybe-elasticsearch-1-5-0") Aphyr's "Call me maybe" for Elasticsearch 1.5.0
-
-          li
-            a(href="http://www.elastic.co/guide/en/elasticsearch/resiliency/current/index.html") Elasticsearch Resiliency Status
-
-      section.content
-        p ELK
-
-      section.content
-         p CHELK.
-
-      section.content
-        p EE EEE (LK).
-
+        h2 ELK Demo
+        img(src="images/black_elk.png")
 
       section.chapter
         h1 ES Errata
@@ -409,16 +418,25 @@ html
           li To the future!
 
       section.content
-        h2 securing ES
-        p
-          a defaults are super open
-          a http://brudtkuhl.com/securing-elasticsearch/
+        h2 Securing ES
+        ul
+          li install updates
+          li firewall with iptables
+          li run Kibana behind HTTPS
+          li run Elasticsearch behind HTTPS
+          li
+            a(href="http://brudtkuhl.com/securing-elasticsearch/") More info from brudtkuhl.com
 
       section.content
         h2 Hosted ElasticSearch
+        h3 Criteria
         ul
-          li host near you
-          li price based on data, etc
+          li Is the hosted ES near your servers?
+          li Does the price work out for the amount of data you have?
+          li Does the provider allow customer configuration/tuning?
+          li Does the provider understand distributed systems, etc
+
+        h3 Providers
         ul
           li https://qbox.io/
           li https://www.compose.io/elasticsearch/
