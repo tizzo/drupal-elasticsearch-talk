@@ -255,7 +255,6 @@ html
                 }
             }'
 
-// issue by person images?
       section.nstielau
         img(src="images/orcas.png" width="600")
 
@@ -299,6 +298,10 @@ html
                       "scale": "100"
                 }
             }
+
+      section.content
+        h2 Percolate
+        
 
       section.content
         h2 Percolate
@@ -367,31 +370,36 @@ html
       section.chapter.tizzo
         h2
           a(href="https://drupal.org/project/search_api_elasticsearch") Search API Elasticsearch
-        ul
-          li RUN AWAY, IT'S TOO LATE FOR ME! SAVE YOURSELVES!!!
+        h3 The Good
+        h4 Really complete integration with all of Search API's features
+        h3 The Bad
+        h4 It's really not mature, too many bugs to really use on a project
 
       section.chapter.tizzo
         h2
           a(href="https://drupal.org/project/elasticsearch_connector")
             span Elasticsearch Connector
+        h3 The Good
         ul
-          li Very very cool
-          li search_api integration is a little incomplete
-          li Views integration
-          li Search API backend integration
-          li Awesome statistics sub-module
+          li A nice framework and API for defining and managing ES clusters/indices
+          li Views Integration
+          li Statistics
+        h3 The Bad
+        ul
+          li Incomplete (but less buggy) Search API integration
 
       section.chapter.tizzo
-        h2 Log aggregation
-        ul
-          li logs_http (log directly to elasticsearch)
-          li gelf log to logstash, logstash indexes to elasticsearch
+        h1 Log aggregation
 
-      // TODO: Put this in the resources section.
-        //p
-          //Search API Elasticsearch
-          //a http://www.sitepoint.com/install-integrate-elasticsearch-drupal/
-          //Howard to write-up/screen capture
+      section.chapter.tizzo
+        h2 Logs HTTP
+        h4 Log directly to Elasticsearch
+        img(width="350px" src="images/logs-http.png")
+
+      section.chapter.tizzo
+        h2 GELF
+        h4 Log to Logstash, let it log to elasticsearch
+        img(width="350px" src="images/gelf.png")
 
       section.chapter
         h1 Devops <3 ES
