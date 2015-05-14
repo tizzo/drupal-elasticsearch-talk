@@ -18,20 +18,20 @@ html
 
       section.content(data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true")
           h2 Nick Stielau
-          h3 @nstielau:
-          h4 Pantheor, Smooth Operator
-          img(src="images/nstielau.jpg" width="100")
+          h3 @nstielau
+          h3 Director of Engineering at Pantheon
+          h3 Smooth operator
       section.content(data-bespoke-fx-transition="cube" data-bespoke-fx-direction="vertical" data-bespoke-fx-reverse="true")
           h2 Howard Tyson
           h3 @tizzo
           h4 Zivtechnician
           img(src="images/tizzo.jpg" width="100")
 
-      section.content
-        h2 We're going to make you love Elasticsearch
+      section.chapter
+        h1 We're going to make you love Elasticsearch
 
       section.content
-        h2 Outline
+        h2 How we'll do it
         ul
           li Elasticsearch Overview
           li Search Engine Comparisons
@@ -40,6 +40,9 @@ html
           li Drupal and Elasticsearch
           li Devops and Elasticsearch
           li Playing with Drupal log commits
+      section.content
+        h2 Slides, examples, demos
+        h3 https://github.com/tizzo/drupal-elasticsearch-talk
 
       section.tizzo.chapter
         h1 Elasticsearch is..
@@ -102,15 +105,13 @@ html
 
       section.content
         h2 ES vs. MySQL Full-text Search
-        p This works out-of-the-box, but it can
+        h3 This works out-of-the-box, but it can
         ul
-          li hit the db hard
-          li be slow
-          li not provide good results
+          li Hit the database hard
+          li Be slow
+          li Uninspired search results
 
       section.content
-        // TODO: We should finish breaking this up into subslides
-        // for this section.
         h2 ES vs. Solr
         //  (NS as Solr vs. HT as ES, i.e. mac vs. pc)
         ul
@@ -121,11 +122,11 @@ html
           li Competition makes stuff better!
           li http://solr-vs-elasticsearch.com/
 
-      section.content.sphinx
-        h2.sphinx ES vs.
-
       section.nstielau.quote.apple
         p "I guess comparing Elasticsearch to Solr is apples to apples, but really it's like comaping a new apple to a rotten apple." -Elasticsearch User
+
+      section.content.sphinx
+        h2.sphinx ES vs.
 
       section.nstielau.content
         h2 Bonus! sane capitalization
@@ -138,8 +139,6 @@ html
 
       session.chapter
         h1 Ain't no Party like a cURL Party
-          span(style="color:#ae81ff;")  because a cURL is
-          span(style="color:#a6e22e;")  nerdy
 
       section.content
         h2 Create an index (curl)
