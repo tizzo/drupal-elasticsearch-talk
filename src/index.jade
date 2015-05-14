@@ -148,7 +148,7 @@ html
         h2 Create an index (curl)
         pre
           code.language-javascript.
-            curl -XPUT 'http://localhost:9200/animals/' -d '
+            curl -XPUT 'http://localhost:9200/logstash-commits/' -d '
               index:
                 number_of_shards : 3
                 number_of_replicas : 2
@@ -161,61 +161,72 @@ html
         strong Request:
         pre
           code.language-javascript.
-            curl -XPUT "http://localhost:9200/animals/dogs/1" -d'
-            {
-                "breed": "'doodle'",
-                "name": "Molly",
-                "is_good": false
+            curl -XPUT "http://localhost:9200/logstash-commits/logs/1" -d' {
+              "commit": "bfdcc65a85a2ae3af5025f8d0a05779fbb59c621",
+              "committer_name": "xjm",
+              "author_name": "xjm",
+              "date": "Tue May 12 15:14:13 2015 -0700",
+              "message": "Issue-2459777 fixing stuff",
+              "@timestamp": "2015-05-12T15:14:13-07:00"
             }'
+
 
         strong Response:
         pre
           code.language-javascript.
             {
                 "ok": true,
-                "_index": "animals",
-                "_type": "dog",
+                "_index": "logstash-commits",
+                "_type": "logs",
                 "_id": 1,
                 "_version": 2
-            }'
+            }
 
       section.content
-        // http://joelabrahamsson.com/elasticsearch-101/
         h2 Retreiving a doc
         strong Request:
         pre
           code.language-javascript.
-            curl -XGET "http://localhost:9200/animals/dogs/1"
+            curl -XGET "http://localhost:9200/logstash-commits/logs/1"
 
         strong Response:
         pre
           code.language-javascript.
             {
-                "_index": "animals",
-                "_type": "dog",
-                "_id": 1,
-                "_version": 2,
-                "exists": true,
-                "_source": {
-                  "breed": "'doodle'",
-                  "name": "Molly",
-                  "is_good": false
-                }
+              "_index": "logstash-commits",
+              "_type": "logs",
+              "_id": 1,
+              "_version": 2,
+              "exists": true,
+              "_source": {
+                "commit": "bfdcc65a85a2ae3af5025f8d0a05779fbb59c621",
+                "committer_name": "xjm",
+                "author_name": "xjm",
+                "date": "Tue May 12 15:14:13 2015 -0700",
+                "message": "Issue-2459777 fixing stuff",
+                "@timestamp": "2015-05-12T15:14:13-07:00"
+              }
             }
 
       section.content
         h2 Searching
+        h3 Find commits by xjm matching 'Views'
+        p
+          strong Query:
+          span  Views
+        p
+          strong Filter:
+          span  xjm
         pre
           code.language-javascript.
-            curl -XPOST "http://localhost:9200/_search" -d'
-            {
+            curl -XPOST "http://localhost:9200/_search" -d'{
                 "query": {
                     "query_string": {
-                        "query": "labrador"
+                        "query": "message:Views"
                     }
                 },
                 "filter": {
-                  "term": {"is_good": true}
+                  "term": {"author_name": "xjm"}
                 }
             }'
 
@@ -250,7 +261,7 @@ html
         strong
         pre
           code.language-javascript.
-            curl -XPUT 'localhost:9200/my-index/.percolator/security' -d '{
+            curl -XPUT 'localhost:9200/logstash-commits/.percolator/security' -d '{
               "query" : {
                 "match" : {
                   "message" : "(message:XSS OR message:security)"
@@ -263,7 +274,7 @@ html
         h3 Running:
         pre
           code.language-javascript.
-            curl -XGET 'localhost:9200/core-commits/message/_percolate' -d '{
+            curl -XGET 'localhost:9200/logstash-commits/logs/_percolate' -d '{
               "doc" : {
                 "message" : "Issue #27230: Fix XHTML slash in XSS filter"
               }
@@ -283,7 +294,7 @@ html
               "total" : 1,
               "matches" : [
                 {
-                  "_index" : "core-commits",
+                  "_index" : "logstash-commits",
                   "_id" : "security"
                 }
               ]
