@@ -285,7 +285,6 @@ html
         p
           strong Solution:
           span Use `function_score` with a decay function
-          span TODO: Extend query
           ul
             li Every 2h, query Google Analytics
             li Update custom field: "ga_rank" = RANK
@@ -301,7 +300,7 @@ html
 
       section.content
         h2 Percolate
-        
+
 
       section.content
         h2 Percolate
@@ -362,10 +361,6 @@ html
 
       section.chapter.tizzo
         h1 Integrating Drupal with Elasticsearch
-
-      section.tizzo.content
-        h2 Drupal Modules
-        p TODO: Adding rating or 'best/worst thing?'
 
       section.chapter.tizzo
         h2
@@ -461,12 +456,6 @@ html
               "message": "Issue #27230: Fix XHTML slash in XSS filter"
             }
 
-      section.content
-        h2 Bans by IP Address
-        h2 ?? Issues by person?
-        span so that we can easily see where attacks are coming from
-        img(src="/images/banned_ips.png" width="300")
-
       section.nstielau.content
         h2 What could you do with data?
         ul
@@ -508,64 +497,3 @@ html
           li https://www.compose.io/elasticsearch/
           li https://www.found.no/
           li https://bonsai.io/
-
-      section.content.nstielau
-        h2 How to sneak in ES
-        ul
-          li Use for ops
-          li show is awesome
-
-      section.content
-        h2 References
-        ul
-          li ES Docs
-          li Blog posts, etc
-          li Our Docker stuff
-
-      section.content
-        h2 Image Credits
-
-      section
-        h2 Bullet List
-        h3.bullet Powered by <a href="https://github.com/markdalgleish/bespoke-bullets">bespoke-bullets</a>
-        ul.sequential
-          li Bullet 1
-          li Bullet 2
-          li Bullet 3
-
-      section
-        h2 Syntax Highlighting
-        h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
-        pre
-          code.language-javascript.
-            bespoke.from('article', [
-              classes(),
-              keys(),
-              touch(),
-              bullets('li, .bullet')
-            ]);
-
-      section(data-bespoke-hash='named-route')
-        h2 Named Route
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
-        p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
-
-      section.emphatic-text(data-bespoke-backdrop='emphatic')
-        h2 Emphatic Slide!
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-backdrop">bespoke-backdrop</a>
-
-      section
-        h2.bullet Just the beginning...
-        br
-        ul
-          li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
-          li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
-          li Edit JavaScript in <em>'src/scripts/main.js'</em>
-        br
-        ul
-          li
-            strong Enjoy! :)
-            a(href='http://twitter.com/markdalgleish')  -@markdalgleish
-
-    script(src='build/build.js')
-    script(src="bower_components/prism/prism.js")
