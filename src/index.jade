@@ -155,10 +155,10 @@ html
         h2 Create an index (curl)
         pre
           code.language-javascript.
-            curl -XPUT 'http://localhost:9200/twitter/' -d '
-              index :
-              number_of_shards : 3
-              number_of_replicas : 2
+            curl -XPUT 'http://localhost:9200/animals/' -d '
+              index:
+                number_of_shards : 3
+                number_of_replicas : 2
             '
             curl 127.0.0.1
 
@@ -298,6 +298,30 @@ html
 
       section.chapter.tizzo
         h1 Integrating Drupal with Elasticsearch
+
+      section.chapter.tizzo
+        h2
+          a(href="https://drupal.org/project/search_api_elasticsearch")Search API Elasticsearch
+        ul
+          li RUN AWAY, IT'S TOO LATE FOR ME! SAVE YOURSELVES!!!
+
+      section.chapter.tizzo
+        h2
+          a(href="https://drupal.org/project/elasticsearch_connector")Elasticsearch Connector
+        ul
+          li Very very cool
+          li search_api integration is a little incomplete
+          li Views integration
+          li Search API backend integration
+          li Awesome statistics sub-module
+
+      section.chapter.tizzo
+        h2 Log aggregation
+        ul
+          li logs_http (log directly to elasticsearch)
+          li gelf log to logstash, logstash indexes to elasticsearch
+
+      // TODO: Put this in the resources section.
         //p
           //Search API Elasticsearch
           //a http://www.sitepoint.com/install-integrate-elasticsearch-drupal/
