@@ -252,6 +252,27 @@ html
         h2 Histogram
         img(src="images/es_histogram.png" width="350")
 
+      section.tizzo.content
+        h2 Example: Score boosting
+        p
+          strong Scenario:
+          span Weight search results by popularity.
+        p
+          strong Solution:
+          span Use `function_score` with a decay function
+          ul
+            li Every 2h, query Google Analytics
+            li Update custom field: "ga_rank" = RANK
+            li Use `function_score` multiple natural score by "ga_boost"
+        pre
+          code.language-javascript.
+            "DECAY_FUNCTION": {
+                "FIELD_NAME": {
+                      "origin": "0",
+                      "scale": "100"
+                }
+            }
+
       section.content
         h2 Percolate
         img(src="images/percolate-yo-dawg.jpg")
@@ -268,10 +289,19 @@ html
                 }
               }
             }'
+        pre
+          code.language-javascript.
+            curl -XPUT 'localhost:9200/logstash-commits/.percolator/admin_ui' -d '{
+              "query" : {
+                "match" : {
+                  "message" : "(message:admin AND message:UI)"
+                }
+              }
+            }'
 
       section.content
         h2 Percolate: Query for matches
-        h3 Running:
+        h3 Define query-matching for admin UI and security commits:
         pre
           code.language-javascript.
             curl -XGET 'localhost:9200/logstash-commits/logs/_percolate' -d '{
@@ -334,28 +364,6 @@ html
           //Search API Elasticsearch
           //a http://www.sitepoint.com/install-integrate-elasticsearch-drupal/
           //Howard to write-up/screen capture
-
-      section.tizzo.content
-        h2 Example: Score boosting
-        p
-          strong Scenario:
-          span Weight search results by popularity.
-        p
-          strong Solution:
-          span Use `function_score` with a decay function
-          ul
-            li Every 2h, query Google Analytics
-            li Update custom field: "ga_rank" = RANK
-            li Use `function_score` multiple natural score by "ga_boost"
-        pre
-          code.language-javascript.
-            "DECAY_FUNCTION": {
-                "FIELD_NAME": {
-                      "origin": "0",
-                      "scale": "100"
-                }
-            }
-
 
       section.chapter
         h1 Devops <3 ES
